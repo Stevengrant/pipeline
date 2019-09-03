@@ -42,7 +42,7 @@ public class ApplicationUserController {
     public String getLogin (){
         return "login";
     }
-    
+
     //Candidate User Posting
 //    @PostMapping("/users")
 //    public RedirectView createUser(String username, String password, String firstName, String lastName, Model m, Principal p) {
