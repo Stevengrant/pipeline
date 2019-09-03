@@ -1,4 +1,4 @@
-package com.pipeline.pipeline.models;
+package com.pipeline.models;
 
 
 import org.springframework.security.core.GrantedAuthority;

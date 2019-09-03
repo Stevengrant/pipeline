@@ -1,4 +1,4 @@
-package com.pipeline.pipeline.models;
+package com.pipeline.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
