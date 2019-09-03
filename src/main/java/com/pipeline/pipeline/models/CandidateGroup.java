@@ -1,10 +1,10 @@
-package com.pipeline.models;
+package com.pipeline.pipeline.models;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Group {
+public class CandidateGroup {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -17,8 +17,8 @@ public class Group {
     List<ScheduledEvent> scheduledEvents;
 
     //Contructor
-    public Group () {}
-    public Group (String groupName, ApplicationUser owner, List<ScheduledEvent> scheduledEvents) {
+    public CandidateGroup() {}
+    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledEvent> scheduledEvents) {
         this.groupName = groupName;
         this.owner = owner;
         this.scheduledEvents = scheduledEvents;
