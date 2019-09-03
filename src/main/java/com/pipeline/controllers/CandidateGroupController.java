@@ -17,7 +17,7 @@ public class CandidateGroupController {
 
     @Autowired
     CandidateGroupRepository candidateGroupRepository;
-    @PostMapping("/addgroup")
+    @PostMapping("/addGroup")
     public RedirectView addGroup(String name, Principal p){
         String groupName = name;
         ApplicationUser owner = applicationUserRepository.findByUsername(p.getName());
