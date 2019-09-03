@@ -1,6 +1,6 @@
-package com.pipeline.pipeline.config;
+package com.pipeline.config;
 
-import com.pipeline.pipeline.models.ApplicationUserRepository;
+import com.pipeline.models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
