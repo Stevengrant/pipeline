@@ -21,9 +21,15 @@ public class ApplicationUser implements UserDetails {
     String password;
     String firstName;
     String lastName;
+    boolean isAdmin;
+
+    @ManyToOne
+    CandidateGroup candidateGroup;
 
     @ManyToMany
     Set<ScheduledEvent> scheduledEvents;
+
+
 
     public long getId() {
         return id;
@@ -31,15 +37,24 @@ public class ApplicationUser implements UserDetails {
 
     //Constructor
     public ApplicationUser () {}
-    public ApplicationUser (String username, String password, String firstName, String lastName,
-                            Set<ScheduledEvent> scheduledEvents) {
+
+    //Constructor for Candidate Users
+    public ApplicationUser (String username, String password, String firstName, String lastName, CandidateGroup candidateGroup) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.scheduledEvents = scheduledEvents;
+        this.candidateGroup = candidateGroup;
+        this.isAdmin = false;
     }
-
+    //Constructor for Admin Users
+    public ApplicationUser (String username, String password, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isAdmin = true;
+    }
     @Override
     public String getUsername() {
         return username;
