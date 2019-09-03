@@ -15,4 +15,12 @@ public class Group {
 
     @OneToMany
     List<ScheduledEvent> scheduledEvents;
+
+    //Contructor
+    public Group () {}
+    public Group (String groupName, ApplicationUser owner, List<ScheduledEvent> scheduledEvents) {
+        this.groupName = groupName;
+        this.owner = owner;
+        this.scheduledEvents = scheduledEvents;
+    }
 }

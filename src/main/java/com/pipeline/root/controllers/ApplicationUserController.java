@@ -28,17 +28,18 @@ public class ApplicationUserController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
 
-    @PostMapping("/users")
-    public RedirectView createUser(String username, String password, String firstName, String lastName,
-                                   Date dateOfBirth, String bio, Model m, Principal p) {
-        ApplicationUser newUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, dateOfBirth, bio);
-        applicationUserRepository.save(newUser);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        m.addAttribute("user", p);
-        m.addAttribute("notPrincipalUser", newUser);
-        return new RedirectView("/userProfile");
-    }
+//    @PostMapping("/users")
+//    public RedirectView createUser(String username, String password, String firstName, String lastName,
+//                                   Date dateOfBirth, String bio, Model m, Principal p) {
+//        ApplicationUser newUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName,
+//                scheduledEvents);
+//        applicationUserRepository.save(newUser);
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        m.addAttribute("user", p);
+//        m.addAttribute("notPrincipalUser", newUser);
+//        return new RedirectView("/userProfile");
+//    }
 
 
 
