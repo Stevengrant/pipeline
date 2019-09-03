@@ -4,6 +4,7 @@ import com.pipeline.models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 //import java.util.ArrayList;
 
 @Controller
@@ -14,6 +15,14 @@ public class ApplicationUserController {
 
     @Autowired
     ApplicationUserRepository applicationUserRepository;
+
+    @GetMapping("/login")
+    public String getLoginScree()
+    {
+
+
+        return "login";
+    }
 
 //    @PostMapping("/users")
 //    public RedirectView createUser(String username, String password, String firstName, String lastName,
