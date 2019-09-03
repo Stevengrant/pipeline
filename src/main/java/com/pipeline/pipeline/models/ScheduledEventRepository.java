@@ -1,4 +1,4 @@
-package com.pipeline.models;
+package com.pipeline.pipeline.models;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

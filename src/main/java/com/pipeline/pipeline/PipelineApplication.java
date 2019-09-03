@@ -1,13 +1,13 @@
-package com.pipeline;
+package com.pipeline.pipeline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RootApplication {
+public class PipelineApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RootApplication.class, args);
+		SpringApplication.run(PipelineApplication.class, args);
 	}
 
 }
