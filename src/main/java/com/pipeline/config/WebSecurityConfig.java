@@ -1,4 +1,4 @@
-package com.pipeline.root.config;
+package com.pipeline.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
