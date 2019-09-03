@@ -35,6 +35,12 @@ public class ApplicationUserController {
         return "login";
     }
 
+    //Modify here for /registration
+    @GetMapping("/signup")
+    public String registerUser() {
+        return "registration";
+    }
+
     @PostMapping("/users")
     //Admin user posting
     public RedirectView createUser(String username, String password, String firstName, String lastName, Model m, Principal p) {
