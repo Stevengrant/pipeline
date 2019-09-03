@@ -1,7 +1,7 @@
 package com.pipeline.root.controllers;
 
-import com.chriscoulon.codefellowship.models.ApplicationUser;
-import com.chriscoulon.codefellowship.models.ApplicationUserRepository;
+import com.pipeline.root.models.ApplicationUser;
+import com.pipeline.root.models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,21 +40,9 @@ public class ApplicationUserController {
         return new RedirectView("/userProfile");
     }
 
-    @GetMapping("/userProfile")
-    public String pullUserProfile(Model m, Principal p) {
-        ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
-        m.addAttribute("notPrincipalUser", currUser);
-        m.addAttribute("user", p);
-        return "userProfile";
-    }
 
-    @PostMapping ("/applicationUser/follow/{idToFollow}")
-    public RedirectView followApplicationUser(@PathVariable long idToFollow, Model m, Principal p) {
-       ApplicationUser applicationUserToFollow = applicationUserRepository.findById(idToFollow).get();
-       applicationUserToFollow.setUsersFollowingMe(applicationUserRepository.findByUsername(p.getName()));
-       applicationUserRepository.save(applicationUserToFollow);
-       return new RedirectView("/viewAllUsers");
-    }
+
+
 
 
 

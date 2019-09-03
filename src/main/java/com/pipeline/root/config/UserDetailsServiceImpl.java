@@ -1,6 +1,6 @@
 package com.pipeline.root.config;
 
-import com.chriscoulon.codefellowship.models.ApplicationUserRepository;
+import com.pipeline.root.models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
