@@ -11,6 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,20 @@ public class ApplicationUserController {
 
     @Autowired
     CandidateGroupRepository candidateGroupRepository;
+  
+    @GetMapping("/login")
+    public String getLoginScree()
+    {
+
+
+        return "login";
+    }
+
+    //Modify here for /registration
+    @GetMapping("/signup")
+    public String registerUser() {
+        return "registration";
+    }
 
     @PostMapping("/users")
     //Admin user posting
@@ -42,7 +58,6 @@ public class ApplicationUserController {
         m.addAttribute("loggedInUser", newUser);
         return new RedirectView("/dashboard");
     }
-
 
 //    Candidate User Posting
     @PostMapping("/users/{groupId}")
@@ -67,7 +82,5 @@ public class ApplicationUserController {
         m.addAttribute("loggedInUser", u);
         return "dashboard";
     }
-
-
 }
 
