@@ -2,6 +2,7 @@ package com.pipeline.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class CandidateGroup {
@@ -11,21 +12,19 @@ public class CandidateGroup {
     long id;
 
     String groupName;
-
-    public ApplicationUser getOwner() {
-        return owner;
-    }
-
     ApplicationUser owner;
 
     @OneToMany
-    List<ScheduledTask> scheduledTasks;
+    Set<Progress> scheduledTasks;
 
     //Contructor
     public CandidateGroup() {}
-    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledTask> scheduledTasks) {
+    public CandidateGroup(String groupName, ApplicationUser owner) {
         this.groupName = groupName;
         this.owner = owner;
-        this.scheduledTasks = scheduledTasks;
+//        this.scheduledTasks = scheduledTasks;
+    }
+    public ApplicationUser getOwner() {
+        return owner;
     }
 }

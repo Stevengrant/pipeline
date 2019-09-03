@@ -17,13 +17,14 @@ public class CandidateGroupController {
 
     @Autowired
     CandidateGroupRepository candidateGroupRepository;
+
     @PostMapping("/addgroup")
     public RedirectView addGroup(String name, Principal p){
         String groupName = name;
         ApplicationUser owner = applicationUserRepository.findByUsername(p.getName());
-        List<ScheduledTask> events = new ArrayList<>();
+//        List<ScheduledTask> events = new ArrayList<>();
 
-        CandidateGroup newGroup = new CandidateGroup(groupName,owner,events);
+        CandidateGroup newGroup = new CandidateGroup(groupName,owner);
         candidateGroupRepository.save(newGroup);
         return new RedirectView("/dashboard");
 
