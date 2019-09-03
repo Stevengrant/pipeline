@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -18,7 +19,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getRoot(){
-        return "index";
+        return "root";
     }
 
     @GetMapping("/registration")
@@ -31,13 +32,23 @@ public class HomeController {
         m.addAttribute("loggedInUser", currentUser);
         return "dashboard";
     }
-    @GetMapping("/login")
-    public String getLogin (){
-        return "login";
-    }
+
+//    @PostMapping("/login")
+//    public RedirectView postLog (String username){
+//
+//        applicationUserRepository.findByUsername()
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        m.addAttribute("loggedInUser", newUser);
+//        return new RedirectView("/dashboard");
+//    }
+//    @GetMapping("/login")
+//    public String getLogin (){
+//        return "login";
+//    }
     @GetMapping("/logout")
     public String getLogout(){
-        return "index";
+        return "root";
     };
 
 }
