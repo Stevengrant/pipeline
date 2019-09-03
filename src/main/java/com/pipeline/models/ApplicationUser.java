@@ -21,6 +21,11 @@ public class ApplicationUser implements UserDetails {
     String password;
     String firstName;
     String lastName;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
     boolean isAdmin;
 
     @ManyToOne
