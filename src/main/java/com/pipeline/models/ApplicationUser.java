@@ -31,9 +31,7 @@ public class ApplicationUser implements UserDetails {
     @ManyToOne
     CandidateGroup candidateGroup;
 
-    @ManyToMany
-    Set<ScheduledTask> scheduledTasks;
-
+//    Set<Progress> scheduledTasks;
 
 
     public long getId() {
