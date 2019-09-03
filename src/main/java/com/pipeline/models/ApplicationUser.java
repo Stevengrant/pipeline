@@ -32,7 +32,7 @@ public class ApplicationUser implements UserDetails {
     CandidateGroup candidateGroup;
 
     @ManyToMany
-    Set<ScheduledEvent> scheduledEvents;
+    Set<ScheduledTask> scheduledTasks;
 
 
 
