@@ -11,16 +11,21 @@ public class CandidateGroup {
     long id;
 
     String groupName;
+
+    public ApplicationUser getOwner() {
+        return owner;
+    }
+
     ApplicationUser owner;
 
     @OneToMany
-    List<ScheduledEvent> scheduledEvents;
+    List<ScheduledTask> scheduledTasks;
 
     //Contructor
     public CandidateGroup() {}
-    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledEvent> scheduledEvents) {
+    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledTask> scheduledTasks) {
         this.groupName = groupName;
         this.owner = owner;
-        this.scheduledEvents = scheduledEvents;
+        this.scheduledTasks = scheduledTasks;
     }
 }

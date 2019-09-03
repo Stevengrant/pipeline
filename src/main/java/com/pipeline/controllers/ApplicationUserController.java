@@ -33,20 +33,9 @@ public class ApplicationUserController {
 
     @Autowired
     CandidateGroupRepository candidateGroupRepository;
-  
-    @GetMapping("/login")
-    public String getLoginScree()
-    {
-
-
-        return "login";
-    }
 
     //Modify here for /registration
-    @GetMapping("/signup")
-    public String registerUser() {
-        return "registration";
-    }
+
 
     @PostMapping("/users")
     //Admin user posting
@@ -74,13 +63,6 @@ public class ApplicationUserController {
 
         m.addAttribute("loggedInUser", newUser);
         return new RedirectView("/dashboard");
-    }
-
-    @GetMapping("/dashboard")
-    public String pullDashboard(Principal p, Model m){
-        ApplicationUser u = applicationUserRepository.findByUsername(p.getName());
-        m.addAttribute("loggedInUser", u);
-        return "dashboard";
     }
 }
 
