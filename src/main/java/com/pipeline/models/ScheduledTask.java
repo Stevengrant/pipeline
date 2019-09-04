@@ -1,7 +1,6 @@
 package com.pipeline.models;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,9 +11,11 @@ public class ScheduledTask {
     long id;
 
     String name;
-    List<String> instructions;
+    @Column(columnDefinition = "text")
+    String instructions;
     String link;
-    Set<String> pointOfContact;
+    @Column(columnDefinition = "text")
+    String pointOfContact;
 
     @ManyToOne
     CandidateGroup groupThisTaskBelongsTo;
@@ -24,13 +25,13 @@ public class ScheduledTask {
 
     public ScheduledTask(){}
 
-    public ScheduledTask(String name, List<String> instructions, Set<String> pointOfContact) {
+    public ScheduledTask(String name, String instructions, String pointOfContact) {
         this.name = name;
         this.instructions = instructions;
         this.pointOfContact = pointOfContact;
     }
 
-    public ScheduledTask(String name, List<String> instructions, Set<String> pointOfContact, String link) {
+    public ScheduledTask(String name, String instructions, String pointOfContact, String link) {
         this.name = name;
         this.instructions = instructions;
         this.pointOfContact = pointOfContact;
@@ -45,11 +46,11 @@ public class ScheduledTask {
         return name;
     }
 
-    public List<String> getInstructions() {
+    public String getInstructions() {
         return instructions;
     }
 
-    public Set<String> getPointOfContact() {
+    public String getPointOfContact() {
         return pointOfContact;
     }
 
@@ -58,11 +59,11 @@ public class ScheduledTask {
         this.name = name;
     }
 
-    public void setInstructions(List<String> instructions) {
+    public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
 
-    public void setPointOfContact(Set<String> pointOfContact) {
+    public void setPointOfContact(String pointOfContact) {
         this.pointOfContact = pointOfContact;
     }
 
