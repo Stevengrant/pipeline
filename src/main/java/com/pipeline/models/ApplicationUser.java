@@ -27,10 +27,11 @@ public class ApplicationUser implements UserDetails {
     }
 
     boolean isAdmin;
-
+    //This represents the relationship between an admin and their owned groups
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "owner")
     Set<CandidateGroup> candidateGroup;
 
+    //This represents the relationship between and candidate and their candidate group
     @ManyToOne
     CandidateGroup groupThatCandidatesBelongTo;
 

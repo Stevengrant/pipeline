@@ -10,14 +10,13 @@ import java.util.Set;
 @Entity
 public class CandidateGroup {
 
+
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     long id;
 
     String groupName;
-    public ApplicationUser getOwner() {
-        return owner;
-    }
 
     @ManyToOne
     ApplicationUser owner;
@@ -58,5 +57,11 @@ public class CandidateGroup {
 
     public void setScheduledTasks(Set<ScheduledTask> scheduledTasks) {
         this.scheduledTasks = scheduledTasks;
+    }
+    public ApplicationUser getOwner() {
+        return owner;
+    }
+    public long getId() {
+        return id;
     }
 }

@@ -13,6 +13,9 @@
 </head>
 <body>
     <h1>YOU ARE LOGGED IN!!!!)(!#)*&%*)!%&*)!)*#%P</h1>
+    <div th:each="group : ${loggedInUser.candidateGroup}">
+        <a th:href="${'/registration/' + group.id}"> invite link</a>
+    </div>
     <div th:fragment="post">
         <form method="POST" action="/addgroup">
             <div class="form-group">
