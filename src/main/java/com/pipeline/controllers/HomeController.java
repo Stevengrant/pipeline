@@ -51,6 +51,22 @@ public class HomeController {
     @GetMapping("/logout")
     public String getLogout(){
         return "root";
-    };
+    }
+
+
+//Testing purpose front end
+    @GetMapping("/groupview")
+    public String getGroupView(){
+        return "groupView";
+    }
+
+    @GetMapping("/taskview")
+    public String getTaskView(){
+        return "taskView";
+    }
+
+
+    //Testing purpose front end
+
 
 }

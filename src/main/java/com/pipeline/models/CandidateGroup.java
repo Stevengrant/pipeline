@@ -5,7 +5,6 @@ import org.hibernate.annotations.Fetch;
 import javax.persistence.*;
 import java.beans.FeatureDescriptor;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class CandidateGroup {
@@ -15,6 +14,9 @@ public class CandidateGroup {
     long id;
 
     String groupName;
+    public ApplicationUser getOwner() {
+        return owner;
+    }
 
     @ManyToOne
     ApplicationUser owner;
@@ -29,15 +31,13 @@ public class CandidateGroup {
     Set<ScheduledTask> tasksThatBelongToThisGroup;
 
 
+
     //Contructor
     public CandidateGroup() {}
-    public CandidateGroup(String groupName, ApplicationUser owner) {
+    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledTask> scheduledTasks) {
         this.groupName = groupName;
         this.owner = owner;
-//        this.scheduledTasks = scheduledTasks;
-    }
-    public ApplicationUser getOwner() {
-        return owner;
+        this.scheduledTasks = scheduledTasks;
     }
 
     public String getGroupName() {

@@ -33,12 +33,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
+
+        //need adjustment on groupviw, taskView. Cant just provide a route there. Change it as needed
         http
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                .antMatchers("/", "/login", "/signup","/registration").permitAll()
+                .antMatchers("/", "/login", "/groupview", "/taskview","/signup","/registration").permitAll()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .anyRequest().authenticated()
                 .and()
