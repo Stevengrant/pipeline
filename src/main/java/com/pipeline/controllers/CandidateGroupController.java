@@ -21,21 +21,18 @@ public class CandidateGroupController {
 
     //create
     @PostMapping("/addgroup")
-    public RedirectView addGroup(String name, Principal p){
-        String groupName = name;
+    public RedirectView addGroup(String groupName, Principal p){
         ApplicationUser owner = applicationUserRepository.findByUsername(p.getName());
-
-
-        CandidateGroup newGroup = new CandidateGroup(groupName,owner,events);
+        if(!owner.isAdmin()){
+            return new RedirectView("/fuckoff");
+        }
+        CandidateGroup newGroup = new CandidateGroup(groupName,owner);
         candidateGroupRepository.save(newGroup);
         return new RedirectView("/dashboard");
-
     }
-
 
     @GetMapping ("/creategroup")
     public String getCreateGroup(Principal p) {
         return "creategroup";
     }
-
 }
