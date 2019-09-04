@@ -3,10 +3,12 @@ package com.pipeline.controllers;
 import com.pipeline.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.validation.GroupSequence;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +36,11 @@ public class CandidateGroupController {
     @GetMapping ("/creategroup")
     public String getCreateGroup(Principal p) {
         return "creategroup";
+    }
+
+    @GetMapping("/groupView")
+    public String getGroupView(Principal p, Model m) {
+        m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
+        return "groupView";
     }
 }
