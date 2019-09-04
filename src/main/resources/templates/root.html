@@ -1,108 +1,55 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Login</title>-->
-
-<!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-<!--    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
-<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-
-<!--    <link rel="stylesheet" href="./css/login.css">-->
-<!--    <script src="./js/login.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <div class="login-reg-panel">-->
-<!--        <div class="login-info-box">-->
-<!--            <h2>Have an account?</h2>-->
-<!--            <p>Lorem ipsum dolor sit amet</p>-->
-<!--            <label id="label-register" for="log-reg-show">Login</label>-->
-<!--            <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">-->
-<!--        </div>-->
-
-<!--        <div class="register-info-box">-->
-<!--            <h2>Don't have an account?</h2>-->
-<!--            <p>Get started now!!</p>-->
-<!--            <label id="label-login" for="log-login-show">Register</label>-->
-<!--            <input type="radio" name="active-log-panel" id="log-login-show">-->
-<!--        </div>-->
-
-<!--        <div class="white-panel">-->
-<!--            <div class="login-show">-->
-<!--                <h2>LOGIN</h2>-->
-<!--                <input type="text" placeholder="Email">-->
-<!--                <input type="password" placeholder="Password">-->
-<!--                <input type="button" value="Login">-->
-<!--                <a href="">Forgot password?</a>-->
-<!--            </div>-->
-<!--            <div class="register-show">-->
-<!--                <h2>REGISTER</h2>-->
-<!--                <input type="text" placeholder="Email">-->
-<!--                <input type="password" placeholder="Password">-->
-<!--                <input type="password" placeholder="Confirm Password">-->
-<!--                <input type="button" value="Register">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</body>-->
-<!--</html>-->
-
-
-<!--&lt;!&ndash;Resources:&ndash;&gt;-->
-<!--&lt;!&ndash;https://bootsnipp.com/snippets/92gmX&ndash;&gt;-->
-
-
-
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+    <title>Login</title>
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./css/login.css">
+</head>
 <body>
-    <div id="screen-container">
-        <div class="card w-50 p-3 mx-auto m-5" id="login-card">
-            <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Sign In</h4>
-                <hr>
-                <p class="text-secondary text-center" id="instructions">Please log in.</p>
-                <form method="POST" action="/login">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                            </div>
-                            <input name="username" class="form-control" placeholder="Username..." type="email">
-                        </div> <!-- input-group.// -->
-                    </div> <!-- form-group// -->
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                            </div>
-                            <input class="form-control" placeholder="Password..." type="password" name="password">
-                        </div> <!-- input-group.// -->
-                    </div> <!-- form-group// -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block" id="login-button"> Login  </button>
-                    </div> <!-- form-group// -->
-                </form>
-            </article>
-        </div>
+<div class="login-reg-panel">
+    <div class="login-info-box">
+        <h2>Have an account?</h2>
+        <label id="label-register" for="log-reg-show">Login</label>
+        <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div class="register-info-box">
+        <h2>Don't have an account?</h2>
+        <p>Get started now!!</p>
+        <label id="label-login" for="log-login-show">Register</label>
+        <input type="radio" name="active-log-panel" id="log-login-show">
+    </div>
+
+    <div class="white-panel">
+        <form method="POST" action="/login">
+            <div class="login-show">
+                <h2>LOGIN</h2>
+                <input type="text" id="username" name="username" placeholder="User Name">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="submit" value="Login">
+                <a href="">Forgot password?</a>
+            </div>
+        </form>
+
+
+        <form method="POST" action="/users">
+            <div class="register-show">
+                <h2>REGISTER</h2>
+                <input type="text" placeholder="First Name" name="firstName">
+                <input type="text" placeholder="Last Name" name="lastName">
+                <input type="text" placeholder="User Name" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+<script src="./js/login.js"></script>
+
 </body>
-
 </html>
-
-<!--Resources-->
-<!--https://bootsnipp.com/snippets/j6r4X-->
