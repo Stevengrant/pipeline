@@ -1,6 +1,7 @@
 package com.pipeline.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,8 +12,9 @@ public class ScheduledTask {
     long id;
 
     String name;
-    String instructions;
-    String pointOfContact;
+    List<String> instructions;
+    String link;
+    Set<String> pointOfContact;
 
     @ManyToOne
     CandidateGroup groupThisTaskBelongsTo;
@@ -21,10 +23,18 @@ public class ScheduledTask {
     Set<Progress> progressRelatedToThisTask;
 
     public ScheduledTask(){}
-    public ScheduledTask(String name, String instructions, String pointOfContact){
+
+    public ScheduledTask(String name, List<String> instructions, Set<String> pointOfContact) {
         this.name = name;
         this.instructions = instructions;
         this.pointOfContact = pointOfContact;
+    }
+
+    public ScheduledTask(String name, List<String> instructions, Set<String> pointOfContact, String link) {
+        this.name = name;
+        this.instructions = instructions;
+        this.pointOfContact = pointOfContact;
+        this.link = link;
     }
 
     public long getId() {
@@ -35,11 +45,11 @@ public class ScheduledTask {
         return name;
     }
 
-    public String getInstructions() {
+    public List<String> getInstructions() {
         return instructions;
     }
 
-    public String getPointOfContact() {
+    public Set<String> getPointOfContact() {
         return pointOfContact;
     }
 
@@ -48,11 +58,11 @@ public class ScheduledTask {
         this.name = name;
     }
 
-    public void setInstructions(String instructions) {
+    public void setInstructions(List<String> instructions) {
         this.instructions = instructions;
     }
 
-    public void setPointOfContact(String pointOfContact) {
+    public void setPointOfContact(Set<String> pointOfContact) {
         this.pointOfContact = pointOfContact;
     }
 

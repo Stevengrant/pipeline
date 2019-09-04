@@ -30,10 +30,9 @@ public class CandidateGroup {
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThisTaskBelongsTo")
     Set<ScheduledTask> tasksThatBelongToThisGroup;
 
-
-
-    //Contructor
+    //Contsructors
     public CandidateGroup() {}
+
     public CandidateGroup(String groupName, ApplicationUser owner) {
         this.groupName = groupName;
         this.owner = owner;

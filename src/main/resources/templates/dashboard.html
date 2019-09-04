@@ -25,10 +25,12 @@
             </div>
             <button type="submit" class="btn btn-primary">Create Group</button>
         </form>
-<!--        <ul class="list-group" name="groupList" id="groupList">-->
-<!--            <li class="list-group-item" th:each="post : ${adminUser.posts}"><span th:text="${group.name}"></span></li>-->
-<!--        </ul>-->
+        <ul class="list-group" name="groupList" id="groupList">
+            <li class="list-group-item" th:each="group : ${loggedInUser.candidateGroup}">
+                <a th:href="@{/groupview}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
+            </li>
+        </ul>
     </div>
-
+    <!--@{/groupview/{id}(id=${loggedInUser.candidateGroup.id})}-->
 </body>
 </html>
