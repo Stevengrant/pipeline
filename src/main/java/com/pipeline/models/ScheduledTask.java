@@ -1,9 +1,7 @@
 package com.pipeline.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class ScheduledTask {
@@ -15,6 +13,12 @@ public class ScheduledTask {
     String name;
     String instructions;
     String pointOfContact;
+
+    @ManyToOne
+    CandidateGroup groupThisTaskBelongsTo;
+
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "taskRelatedToThisProgress")
+    Set<Progress> progressRelatedToThisTask;
 
     public ScheduledTask(){}
     public ScheduledTask(String name, String instructions, String pointOfContact){
@@ -52,7 +56,12 @@ public class ScheduledTask {
         this.pointOfContact = pointOfContact;
     }
 
+    public CandidateGroup getGroupThisTaskBelongsTo() {
+        return groupThisTaskBelongsTo;
+    }
 
-
+    public Set<Progress> getProgressRelatedToThisTask() {
+        return progressRelatedToThisTask;
+    }
 
 }

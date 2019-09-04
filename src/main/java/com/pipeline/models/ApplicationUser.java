@@ -28,15 +28,14 @@ public class ApplicationUser implements UserDetails {
 
     boolean isAdmin;
 
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "owner")
+    Set<CandidateGroup> candidateGroup;
+
     @ManyToOne
-    CandidateGroup candidateGroup;
+    CandidateGroup groupThatCandidatesBelongTo;
 
-//    Set<Progress> scheduledTasks;
-
-
-    public long getId() {
-        return id;
-    }
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser")
+    Set<Progress> ProgressOfScheduledTasks;
 
     //Constructor
     public ApplicationUser () {}
@@ -47,7 +46,7 @@ public class ApplicationUser implements UserDetails {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.candidateGroup = candidateGroup;
+        this.candidateGroup.add(candidateGroup);
         this.isAdmin = false;
     }
     //Constructor for Admin Users
@@ -115,5 +114,21 @@ public class ApplicationUser implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<CandidateGroup> getCandidateGroup() {
+        return candidateGroup;
+    }
+
+    public void setCandidateGroup(CandidateGroup candidateGroup) {
+        this.candidateGroup.add(candidateGroup);
+    }
+
+    public Set<Progress> getProgressOfScheduledTasks() {
+        return ProgressOfScheduledTasks;
+    }
+
+    public long getId() {
+        return id;
     }
 }
