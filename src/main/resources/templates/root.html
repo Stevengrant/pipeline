@@ -4,52 +4,55 @@
     <meta charset="UTF-8">
     <title>Login</title>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="./css/login.css">
+
 </head>
 <body>
-<div class="login-reg-panel">
-    <div class="login-info-box">
-        <h2>Have an account?</h2>
-        <label id="label-register" for="log-reg-show">Login</label>
-        <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+    <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+        </div>
+
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <p>Get started now!!</p>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+        <div class="white-panel">
+            <form method="POST" action="/login">
+                <div class="login-show">
+                    <h2>LOGIN</h2>
+                    <input type="text" id="username" name="username" placeholder="User Name">
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="submit" value="Login">
+                    <a href="">Forgot password?</a>
+                </div>
+            </form>
+
+
+            <form method="POST" action="/users">
+                <div class="register-show">
+                    <h2>REGISTER</h2>
+                    <input type="text" placeholder="First Name" name="firstName">
+                    <input type="text" placeholder="Last Name" name="lastName">
+                    <input type="text" placeholder="User Name" name="username">
+                    <input type="password" placeholder="Password" name="password">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="register-info-box">
-        <h2>Don't have an account?</h2>
-        <p>Get started now!!</p>
-        <label id="label-login" for="log-login-show">Register</label>
-        <input type="radio" name="active-log-panel" id="log-login-show">
-    </div>
-
-    <div class="white-panel">
-        <form method="POST" action="/login">
-            <div class="login-show">
-                <h2>LOGIN</h2>
-                <input type="text" id="username" name="username" placeholder="User Name">
-                <input type="password" id="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
-                <a href="">Forgot password?</a>
-            </div>
-        </form>
-
-
-        <form method="POST" action="/users">
-            <div class="register-show">
-                <h2>REGISTER</h2>
-                <input type="text" placeholder="First Name" name="firstName">
-                <input type="text" placeholder="Last Name" name="lastName">
-                <input type="text" placeholder="User Name" name="username">
-                <input type="password" placeholder="Password" name="password">
-                <input type="submit" value="Register">
-            </div>
-        </form>
-    </div>
-</div>
-<script src="./js/login.js"></script>
+    <script src="./js/login.js"></script>
 
 </body>
 </html>
