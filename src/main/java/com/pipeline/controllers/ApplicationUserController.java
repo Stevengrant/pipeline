@@ -44,24 +44,18 @@ public class ApplicationUserController {
         applicationUserRepository.save(newUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        m.addAttribute("loggedInUser", newUser);
         return new RedirectView("/dashboard");
     }
 
 //    Candidate User Posting
     @PostMapping("/users/{groupId}")
     public RedirectView createUser(@PathVariable long groupId, String username, String password, String firstName, String lastName, Model m, Principal p) {
-
         CandidateGroup cg = candidateGroupRepository.findById(groupId).get();
-
         ApplicationUser newUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName,
                 cg);
         applicationUserRepository.save(newUser);
-
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        m.addAttribute("loggedInUser", newUser);
         return new RedirectView("/dashboard");
     }
 }

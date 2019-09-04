@@ -1,9 +1,6 @@
 package com.pipeline.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -17,6 +14,12 @@ public class Progress {
     Date created;
     Date due;
     Date completeAt;
+
+    @ManyToOne
+    ApplicationUser applicationUser;
+
+    @ManyToOne
+    ScheduledTask taskRelatedToThisProgress;
 
     public Progress(){}
     public Progress (boolean isComplete, Date created, Date due, Date completeAt){
