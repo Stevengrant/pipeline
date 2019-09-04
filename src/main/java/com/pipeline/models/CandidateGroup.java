@@ -1,7 +1,11 @@
 package com.pipeline.models;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
+import java.beans.FeatureDescriptor;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class CandidateGroup {
@@ -11,21 +15,48 @@ public class CandidateGroup {
     long id;
 
     String groupName;
-
     public ApplicationUser getOwner() {
         return owner;
     }
 
+    @ManyToOne
     ApplicationUser owner;
 
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThatCandidatesBelongTo")
+    Set<ApplicationUser> candidatesInAGroup;
+
     @OneToMany
-    List<ScheduledTask> scheduledTasks;
+    Set<ScheduledTask> scheduledTasks;
+
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThisTaskBelongsTo")
+    Set<ScheduledTask> tasksThatBelongToThisGroup;
+
+
 
     //Contructor
     public CandidateGroup() {}
-    public CandidateGroup(String groupName, ApplicationUser owner, List<ScheduledTask> scheduledTasks) {
+    public CandidateGroup(String groupName, ApplicationUser owner) {
         this.groupName = groupName;
         this.owner = owner;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public void setOwner(ApplicationUser owner) {
+        this.owner = owner;
+    }
+
+    public Set<ScheduledTask> getScheduledTasks() {
+        return scheduledTasks;
+    }
+
+    public void setScheduledTasks(Set<ScheduledTask> scheduledTasks) {
         this.scheduledTasks = scheduledTasks;
     }
 }
