@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ScheduledTaskController {
@@ -29,7 +33,9 @@ public class ScheduledTaskController {
         if(!group.getOwner().equals(user.getUsername())){
             return new RedirectView("fuckoff");
         }
-        ScheduledTask task = new ScheduledTask(nameOfTask,instructions,poc);
+//        List instructionList = new List<String>();
+//        instructionList.add(instructions);
+        ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc );
         scheduledTaskRepository.save(task);
         return new RedirectView("/dashboard");
     }
@@ -41,9 +47,7 @@ public class ScheduledTaskController {
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(p.getName())) {
             return new RedirectView("/fuckoff");
         }
-        taskToBeUpdated.setName(nameOfTask);
-        taskToBeUpdated.setInstructions(instructions);
-        taskToBeUpdated.setPointOfContact(poc);
+//        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
         return new RedirectView("/dashboard");
 

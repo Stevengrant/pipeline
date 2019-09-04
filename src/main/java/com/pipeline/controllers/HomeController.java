@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -34,6 +35,11 @@ public class HomeController {
     public String getRegistration(){
         return "registration";
     }
+    @GetMapping("/registration/{groupId}")
+    public String getRegistration(@PathVariable long groupId, Model m){
+        m.addAttribute("groupId", groupId);
+        return "registration";
+    }
 
     @GetMapping("/dashboard")
     public String getDash(Principal p, Model m){
@@ -44,7 +50,6 @@ public class HomeController {
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
 
         m.addAttribute("loggedInUser", currentUser);
-//        m.addAttribute(, );
         return "dashboard";
     }
 
