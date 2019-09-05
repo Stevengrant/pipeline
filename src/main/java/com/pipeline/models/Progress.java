@@ -21,10 +21,12 @@ public class Progress {
     ScheduledTask taskRelatedToThisProgress;
 
     public Progress(){}
-    public Progress (boolean isComplete, Date due, Date completeAt){
+    public Progress (boolean isComplete, Date due, Date completeAt, ApplicationUser applicationUser,ScheduledTask scheduledTask){
         this.isComplete = isComplete;
         this.due = due;
         this.completeAt = completeAt;
+        this.applicationUser = applicationUser;
+        this.taskRelatedToThisProgress = scheduledTask;
     }
 
     public boolean isComplete() {
