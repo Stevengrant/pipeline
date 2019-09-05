@@ -54,8 +54,8 @@ public class CandidateGroup {
         return scheduledTasks;
     }
 
-    public void setScheduledTasks(Set<ScheduledTask> scheduledTasks) {
-        this.scheduledTasks = scheduledTasks;
+    public void setScheduledTasks(ScheduledTask scheduledTask) {
+        this.scheduledTasks.add(scheduledTask);
     }
     public ApplicationUser getOwner() {
         return owner;
@@ -63,4 +63,25 @@ public class CandidateGroup {
     public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<ApplicationUser> getCandidatesInAGroup() {
+        return candidatesInAGroup;
+    }
+
+    public void setCandidatesInAGroup(Set<ApplicationUser> candidatesInAGroup) {
+        this.candidatesInAGroup = candidatesInAGroup;
+    }
+
+
+    public Set<ScheduledTask> getTasksThatBelongToThisGroup() {
+        return tasksThatBelongToThisGroup;
+    }
+
+//    public void setTasksThatBelongToThisGroup(Set<ScheduledTask> tasksThatBelongToThisGroup) {
+//        this.tasksThatBelongToThisGroup = tasksThatBelongToThisGroup;
+//    }
 }

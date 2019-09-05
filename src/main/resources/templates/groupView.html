@@ -13,18 +13,31 @@
     <link rel="stylesheet" href="./css/taskView.css">
 </head>
 <body>
-    <!--<h1><span th:text="${group.getName()}"></span></h1>-->
-    <!--th:href="@{/task/{id}(id=${task.id})}"-->
-    <form method="GET" action="/taskview">
+    <h1><span th:text="${group.getGroupName()}"></span></h1>
+<!--th:href="@{/task/{id}(id=${task.id})}"-->
+<!--    <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>-->
+
+<!--    <form method="GET" action="${'/taskview/' + group.getId()}">-->
+
+
+    <form method="GET" th:action="${'/taskview/' + group.getId()}">
         <button type="submit" class="btn btn-primary" >Add Task</button>
     </form>
 
+
+<!--    <ul>-->
+<!--        <li th:each="post : ${user.Posts}" th:text="${post.getBody() + ' ' + post.getTimeStamp()}">-->
+<!--        </li>-->
+<!--    </ul>-->
     <div class="card" id="existing-tasks" style="width: 18rem;">
         <ul class="list-group list-group-flush">
             <h3 class="list-group-item-heading">Tasks: </h3>
-            <li class="list-group-item">Task 1</li>
-            <li class="list-group-item">Task 2</li>
-            <li class="list-group-item">Task 3</li>
+<!--            <li class="list-group-item">Task 1</li>-->
+<!--            <li class="list-group-item">Task 2</li>-->
+<!--            <li class="list-group-item">Task 3</li>-->
+            <li th:each="task : ${group.getScheduledTasks()}" class="list-group-item">
+                <h1><span th:text="${task.getName()}"></span></h1></a>
+            </li>
         </ul>
     </div>
 
