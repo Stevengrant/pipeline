@@ -36,7 +36,11 @@
     </div>
 <!--    Candidate dashboard view-->
     <div th:unless="${loggedInUser.isAdmin}">
-        
+        <h2>Hello, <span th:text="${loggedInUser.firstName}"> </span></h2>
+        <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}"></h4>
+<!--        <ul th:each="task : ${loggedInUser.candidateGroup.scheduledTasks}">-->
+<!--            <li th:text="${task.name}"></li>-->
+<!--        </ul>-->
     </div>
     <!--@{/groupview/{id}(id=${loggedInUser.candidateGroup.id})}-->
 </body>
