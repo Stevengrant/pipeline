@@ -29,6 +29,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Create Group</button>
         </form>
+
         <ul class="list-group" name="groupList" id="groupList">
             <li class="list-group-item" th:each="group : ${loggedInUser.candidateGroup}">
                 <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
@@ -38,8 +39,22 @@
 
 <!--    Candidate dashboard view-->
     <div th:unless="${loggedInUser.isAdmin}">
+
         <h2>Hello, <span th:text="${loggedInUser.firstName}"> </span></h2>
         <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}"></h4>
+        <ul >
+
+            <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
+                <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
+                <div th:if="${!task.isComplete}">
+                    <form  method="post" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
+                </div>
+                <div th:unless="${!task.isComplete}"> DONE</div>
+            </li>
+
+
+        </ul>
+
     </div>
 </body>
 </html>
