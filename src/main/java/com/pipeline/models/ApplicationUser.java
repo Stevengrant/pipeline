@@ -47,7 +47,7 @@ public class ApplicationUser implements UserDetails {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.candidateGroup.add(candidateGroup);
+        this.groupThatCandidatesBelongTo = candidateGroup;
         this.isAdmin = false;
     }
     //Constructor for Admin Users

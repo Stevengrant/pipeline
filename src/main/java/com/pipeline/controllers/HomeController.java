@@ -31,13 +31,16 @@ public class HomeController {
         return "root";
     }
 
-    @GetMapping("/registration")
-    public String getRegistration(){
+
+    @GetMapping("/registration/{id}")
+    public String getRegistration(@PathVariable long id, Model m){
+        m.addAttribute("isCandidate",true);
+        m.addAttribute("groupId", id);
         return "registration";
     }
-    @GetMapping("/registration/{groupId}")
-    public String getRegistration(@PathVariable long groupId, Model m){
-        m.addAttribute("groupId", groupId);
+    @GetMapping("/registration")
+    public String getRegistration(Model m){
+        m.addAttribute("isCandidate",false);
         return "registration";
     }
 
