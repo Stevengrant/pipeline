@@ -1,0 +1,20 @@
+#screen-container {
+    background-color: #D0860D;
+}
+
+#primary-background {
+    background-color: rgba(236, 48, 20, 0.9);
+}
+
+#secondary-background {
+    color: #e33059;
+}
+
+#login-button {
+    border-color: #963542;
+}
+
+.input-fields {
+    background-color: #cc604e;
+        border-color: #963542;
+}
