@@ -44,13 +44,14 @@
 
             <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
                 <span th:text="${task.taskRelatedToThisProgress.name}"></span>
+                <div th:if="${!task.isComplete}">
+                    <form  method="post" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
+                </div>
+                <div th:unless="${!task.isComplete}"> DONE</div>
             </li>
-            <li >
-<!--                <span th:if="${task.isComplete">-->
-                    <form class="aThing" action=""> <label> Mark As Done<input type="button"> </label></form>
-<!--                </span>-->
 
-            </li>
+<!--            th:action="${'/task/update/' + task.getId()}"-->
+
         </ul>
     </div>
     <!--@{/groupview/{id}(id=${loggedInUser.candidateGroup.id})}-->
