@@ -65,15 +65,19 @@ public class ScheduledTaskController {
     }
 
     //delete
-    @DeleteMapping("/task/{id}")
+
+    @DeleteMapping("/task/delete/{id}")
     public RedirectView deleteTask(@PathVariable long id, Principal p) {
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeRemoved = scheduledTaskRepository.findById(id).get();
-        if (!taskToBeRemoved.getGroupThisTaskBelongsTo().getOwner().equals(p.getName())) {
+        if (!taskToBeRemoved.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
             return new RedirectView("/fuckoff");
         }
         scheduledTaskRepository.delete(taskToBeRemoved);
         return new RedirectView("/dashboard");
     }
+
+
 
     @GetMapping("/addtask")
     public String getAddTask () {

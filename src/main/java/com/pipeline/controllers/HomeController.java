@@ -90,6 +90,13 @@ public class HomeController {
         return "editTaskView";
     }
 
+//    @GetMapping("/task/delete/{taskId}")
+//    public String getTaskToDelete(@PathVariable long taskId, Model m){
+//        ScheduledTask task = scheduledTaskRepository.findById(taskId).get();
+//        m.addAttribute("task", task);
+//        return "editTaskView";
+//    }
+
 
     @GetMapping("/taskview")
     public String getTaskView(){
