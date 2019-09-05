@@ -72,14 +72,15 @@ public class ScheduledTaskController {
     }
 
     @GetMapping("/taskview/edit/{taskId}")
-    public String getTaskViewEdit(@PathVariable long taskId, Model m){
+    public String getTaskViewEdit(@PathVariable long taskId, Model m, Principal p){
         ScheduledTask task = scheduledTaskRepository.findById(taskId).get();
+        ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("task", task);
+        m.addAttribute("loggedInUser", currUser);
         return "editTaskView";
     }
 
     //delete
-
     @DeleteMapping("/task/delete/{id}")
     public RedirectView deleteTask(@PathVariable long id, Principal p) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
