@@ -22,14 +22,12 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add a new member to this group.</h4>
                     </div>
-                    <!--<div th:each="group : ${loggedInUser.candidateGroup}">-->
-                        <!--<a th:href="${'/registration/' + group.id}"></a>-->
-                    <!--</div>-->
                     <div class="modal-body">
                         <form method="POST" action="/addMember">
                             <div class="form-group">
                                 <label for="memberEmail">Member Email: </label>
-                                <p class="form-control" name="memberEmail" id="memberEmail" aria-describedby="createMember" th:text="${'/registration/' + loggedInUser.candidateGroup.id}"></p>
+
+                                <p class="form-control" name="memberEmail" id="memberEmail" aria-describedby="createMember" th:text="${'localhost:8080/registration/' + group.id}"></p>
                                 <small id="createMember" class="form-text text-muted">Send your new group member this link to the site.</small>
                             </div>
                         </form>
