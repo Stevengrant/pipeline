@@ -11,9 +11,12 @@ public class ScheduledTask {
     long id;
 
     String name;
+
     @Column(columnDefinition = "text")
     String instructions;
+
     String link;
+
     @Column(columnDefinition = "text")
     String pointOfContact;
 
