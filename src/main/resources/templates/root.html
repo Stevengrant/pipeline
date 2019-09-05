@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -12,9 +12,11 @@
 
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/banner.css">
 
 </head>
 <body id="screen-container">
+    <div th:replace="fragments/banner :: banner"></div>
     <div class="login-reg-panel" id="primary-background">
         <div class="login-info-box">
             <h2>Have an account?</h2>
@@ -36,7 +38,7 @@
                     <input class="input-fields" type="text" id="username" name="username" placeholder="User Name">
                     <input class="input-fields" type="password" id="password" name="password" placeholder="Password">
                     <input type="submit" value="Login">
-                    <a href="">Forgot password?</a>
+                    <!--<a href="">Forgot password?</a>-->
                 </div>
             </form>
 

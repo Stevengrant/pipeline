@@ -10,9 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="./css/banner.css">
+
 </head>
 <body>
-    <h1>YOU ARE LOGGED IN!!!!)(!#)*&%*)!%&*)!)*#%P</h1>
+    <div th:replace="fragments/banner :: banner"></div>
     <div th:each="group : ${loggedInUser.candidateGroup}">
         <a th:href="${'/registration/' + group.id}"> invite link</a>
     </div>

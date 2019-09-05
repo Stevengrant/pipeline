@@ -1,9 +1,9 @@
 #screen-container {
-    background-color: #D0860D;
+    background-color: #80839B;
 }
 
 #primary-background {
-    background-color: rgba(236, 48, 20, 0.9);
+    background-color: #963542;
 }
 
 #secondary-background {
@@ -14,7 +14,14 @@
     border-color: #963542;
 }
 
+/*
+#username {
+    color: #00F0FF;
+}
+*/
+
 .input-fields {
-    background-color: #cc604e;
-        border-color: #963542;
+    color: #D4E5E4;
+    background-color: #963542;
+    border-color: #963542;
 }
