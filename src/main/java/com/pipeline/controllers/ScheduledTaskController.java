@@ -30,12 +30,13 @@ public class ScheduledTaskController {
         //TODO: This might need some work
         //Checking to see if the person who's posting the new task is in fact the
         //owner of the group.
-        if(!group.getOwner().equals(user.getUsername())){
+        if(!group.getOwner().equals(user)){
             return new RedirectView("fuckoff");
         }
 //        List instructionList = new List<String>();
 //        instructionList.add(instructions);
         ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc );
+        group.setScheduledTasks(task);
         scheduledTaskRepository.save(task);
         return new RedirectView("/dashboard");
     }

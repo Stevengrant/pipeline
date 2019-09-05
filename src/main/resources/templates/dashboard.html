@@ -27,7 +27,7 @@
         </form>
         <ul class="list-group" name="groupList" id="groupList">
             <li class="list-group-item" th:each="group : ${loggedInUser.candidateGroup}">
-                <a th:href="@{/groupview}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
+                <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
             </li>
         </ul>
     </div>

@@ -65,6 +65,22 @@ public class HomeController {
         return "groupView";
     }
 
+
+    @GetMapping("/groupview/{groupId}")
+    public String getSingleGroupView(@PathVariable long groupId, Model m){
+        CandidateGroup group = candidateGroupRepository.findById(groupId).get();
+        m.addAttribute("group", group);
+        return "groupView";
+    }
+
+    @GetMapping("/taskview/{groupId}")
+    public String getTaskView(@PathVariable long groupId, Model m){
+        CandidateGroup group = candidateGroupRepository.findById(groupId).get();
+        m.addAttribute("group", group);
+        return "taskView";
+    }
+
+
     @GetMapping("/taskview")
     public String getTaskView(){
         return "taskView";

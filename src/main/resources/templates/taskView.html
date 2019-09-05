@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Task View</title>
@@ -17,22 +17,28 @@
 <body>
 
 <h2>Task View</h2>
+<h1><span th:text="${group.getGroupName()}"></span></h1>
 
-<form action="#">
+<!--nameOfTask, String instructions, String poc-->
+
+<form method="POST" th:action="${'/addtask/' + group.getId()}">
     Task Name:<br>
-    <input type="text" name="taskName" value="Mickey">
+    <input type="text" name="nameOfTask" value="Mickey">
     <br>
     Instruction:<br>
-    <input type="text" name="instruction" value="instruction 1">
+    <input type="text" name="instructions" value="instruction 1">
     <button type="button" class="btn btn-primary">Add instruction</button>
     <br><br>
     Task link:<br>
     <input type="text" name="taskLink" value="www.google.com">
     <br><br>
+    Task link:<br>
+    <input type="text" name="poc" value="www.google.com">
+    <br><br>
 
 
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="submit" class="btn btn-success">Save</button>
         <button type="button" class="btn btn-danger">Delete</button>
     </div>
 
