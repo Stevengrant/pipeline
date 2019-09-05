@@ -26,14 +26,14 @@ public class ApplicationUser implements UserDetails {
         return isAdmin;
     }
 
-    boolean isAdmin;
+    public boolean isAdmin;
     //This represents the relationship between an admin and their owned groups
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "owner")
     Set<CandidateGroup> candidateGroup;
 
     //This represents the relationship between and candidate and their candidate group
     @ManyToOne
-    CandidateGroup groupThatCandidatesBelongTo;
+    public CandidateGroup groupThatCandidatesBelongTo;
 
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser")
     Set<Progress> ProgressOfScheduledTasks;
