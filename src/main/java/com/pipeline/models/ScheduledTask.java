@@ -1,6 +1,7 @@
 package com.pipeline.models;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -16,6 +17,7 @@ public class ScheduledTask {
     String instructions;
 
     String link;
+    Date dueDate;
 
     @Column(columnDefinition = "text")
     String pointOfContact;
@@ -34,11 +36,13 @@ public class ScheduledTask {
         this.pointOfContact = pointOfContact;
     }
 
-    public ScheduledTask(String name, String instructions, String pointOfContact, String link,CandidateGroup groupThisTaskBelongsTo ) {
+    public ScheduledTask(String name, String instructions, String pointOfContact, String link,
+     Date dueDate, CandidateGroup groupThisTaskBelongsTo ) {
         this.name = name;
         this.instructions = instructions;
         this.pointOfContact = pointOfContact;
         this.link = link;
+        this.dueDate = dueDate;
         this.groupThisTaskBelongsTo = groupThisTaskBelongsTo;
     }
 
@@ -79,4 +83,15 @@ public class ScheduledTask {
         return progressRelatedToThisTask;
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getLink() {
+        return link;
+    }
 }
