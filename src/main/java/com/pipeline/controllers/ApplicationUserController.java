@@ -1,9 +1,6 @@
 package com.pipeline.controllers;
 
-import com.pipeline.models.ApplicationUser;
-import com.pipeline.models.ApplicationUserRepository;
-import com.pipeline.models.CandidateGroup;
-import com.pipeline.models.CandidateGroupRepository;
+import com.pipeline.models.*;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class ApplicationUserController {
@@ -34,6 +32,8 @@ public class ApplicationUserController {
     @Autowired
     CandidateGroupRepository candidateGroupRepository;
 
+    @Autowired
+    ScheduledTaskRepository scheduledTaskRepository;
     //Modify here for /registration
 
 
@@ -51,8 +51,11 @@ public class ApplicationUserController {
     @PostMapping("/users/{groupId}")
     public RedirectView createUser(@PathVariable long groupId, String username, String password, String firstName, String lastName, Model m, Principal p) {
         CandidateGroup cg = candidateGroupRepository.findById(groupId).get();
+//        Set<ScheduledTask> tasks = scheduledTaskRepository.findAll
+
         ApplicationUser newUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName,
                 cg);
+
         applicationUserRepository.save(newUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);

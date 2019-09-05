@@ -24,7 +24,7 @@ public class ScheduledTaskController {
 
     //create
     @PostMapping("/addtask/{groupId}")
-    public RedirectView addTask(@PathVariable long groupId, Principal p, String nameOfTask, String instructions, String poc ){
+    public RedirectView addTask(@PathVariable long groupId, Principal p, String nameOfTask, String instructions, String poc, String taskLink ){
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         CandidateGroup group = candidateGroupRepository.findById(groupId).get();
         //TODO: This might need some work
@@ -35,7 +35,7 @@ public class ScheduledTaskController {
         }
 //        List instructionList = new List<String>();
 //        instructionList.add(instructions);
-        ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc );
+        ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc, taskLink, group );
         group.setScheduledTasks(task);
         scheduledTaskRepository.save(task);
         return new RedirectView("/dashboard");

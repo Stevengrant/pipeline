@@ -34,11 +34,12 @@ public class ScheduledTask {
         this.pointOfContact = pointOfContact;
     }
 
-    public ScheduledTask(String name, String instructions, String pointOfContact, String link) {
+    public ScheduledTask(String name, String instructions, String pointOfContact, String link,CandidateGroup groupThisTaskBelongsTo ) {
         this.name = name;
         this.instructions = instructions;
         this.pointOfContact = pointOfContact;
         this.link = link;
+        this.groupThisTaskBelongsTo = groupThisTaskBelongsTo;
     }
 
     public long getId() {
