@@ -35,8 +35,12 @@
 <!--            <li class="list-group-item">Task 1</li>-->
 <!--            <li class="list-group-item">Task 2</li>-->
 <!--            <li class="list-group-item">Task 3</li>-->
+<!--            <a th:href="${'/registration/' + group.id}"> invite link</a>-->
+            <!--    <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>-->
+
             <li th:each="task : ${group.getScheduledTasks()}" class="list-group-item">
-                <h1><span th:text="${task.getName()}"></span></h1></a>
+<!--                <h1><span th:text="${task.getName()}"></span></h1>-->
+                <a th:href="${'/taskview/edit/' + task.getId()}"><h1><span th:text="${task.getName()}"></span></h1></a>
             </li>
         </ul>
     </div>

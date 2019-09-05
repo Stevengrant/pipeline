@@ -83,6 +83,13 @@ public class HomeController {
         return "taskView";
     }
 
+    @GetMapping("/taskview/edit/{taskId}")
+    public String getTaskViewEdit(@PathVariable long taskId, Model m){
+        ScheduledTask task = scheduledTaskRepository.findById(taskId).get();
+        m.addAttribute("task", task);
+        return "editTaskView";
+    }
+
 
     @GetMapping("/taskview")
     public String getTaskView(){

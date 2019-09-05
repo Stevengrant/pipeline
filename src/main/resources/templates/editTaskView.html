@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Task View</title>
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./css/taskView.css">
+    <!--    <script src="./js/taskView.js"></script>-->
+</head>
+
+<body>
+
+<h2>Task View</h2>
+<h1><span th:text="${task.getName()}"></span></h1>
+
+<!--<li th:each="task : ${group.getScheduledTasks()}" class="list-group-item">-->
+<!--    <a th:href="${'/taskview/edit/' + group.id}"><span th:text="${task.getName()}"></span></h1></a>-->
+<!--</li>-->
+
+<form method="POST" th:action="${'/task/update/' + task.getId()}">
+    Task Name:<br>
+    <input type="text" name="nameOfTask" placeholder="task name">
+    <br>
+    Instruction:<br>
+    <input type="text" name="instructions" placeholder="instruction">
+    <button type="button" class="btn btn-primary">Add instruction</button>
+    <br><br>
+    Task link:<br>
+    <input type="text" name="taskLink" placeholder="www.google.com">
+    <br><br>
+    POC:<br>
+    <input type="text" name="poc" placeholder="Point Of Contact">
+    <br><br>
+
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+
+</form>
+
+
+<!--<div class="form-group">-->
+<!--    <h1>To-Do <small>List</small></h1>-->
+<!--    <form role="form">-->
+<!--        <input type="text" class="form-control" placeholder="Your Task" name="task">-->
+<!--    </form>-->
+<!--    <button type="button" class="btn btn btn-primary">Add</button>-->
+<!--</div>-->
+<!--<div></div>-->
+<!--<ul class="list-unstyled" id="todo"></ul>-->
+
+
+
+
+<!--<script src="./js/taskView.js"></script>-->
+</body>
+</html>
+
+

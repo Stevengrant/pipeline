@@ -44,8 +44,9 @@ public class ScheduledTaskController {
     //update
     @PostMapping("/task/update/{id}")
     public RedirectView updateTask(@PathVariable long id, Principal p, String nameOfTask, String instructions, String poc) {
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(id).get();
-        if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(p.getName())) {
+        if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
             return new RedirectView("/fuckoff");
         }
 //        taskToBeUpdated.setPointOfContact(poc);
