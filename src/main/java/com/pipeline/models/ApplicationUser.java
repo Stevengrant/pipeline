@@ -35,6 +35,9 @@ public class ApplicationUser implements UserDetails {
     @ManyToOne
     public CandidateGroup groupThatCandidatesBelongTo;
 
+    public void setProgressOfScheduledTasks(Set<Progress> progressOfScheduledTasks) {
+        ProgressOfScheduledTasks = progressOfScheduledTasks;
+    }
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser", cascade = CascadeType.ALL)
     Set<Progress> ProgressOfScheduledTasks;
 

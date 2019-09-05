@@ -22,6 +22,8 @@ public class ScheduledTaskController {
     CandidateGroupRepository candidateGroupRepository;
     @Autowired
     ScheduledTaskRepository scheduledTaskRepository;
+    @Autowired
+    ProgressRepository progressRepository;
 
     //create
     @PostMapping("/addtask/{groupId}")
@@ -66,6 +68,24 @@ public class ScheduledTaskController {
         scheduledTaskRepository.save(taskToBeUpdated);
         return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
 
+    }
+    @PostMapping("/task/markAsDone/{id}")
+    public RedirectView markScheduledTaskAsDone(@PathVariable Long id, Principal p){
+        ApplicationUser u = applicationUserRepository.findByUsername(p.getName());
+        Set<Progress> prog = u.getProgressOfScheduledTasks();
+        for (Progress progress : prog){
+            if(progress.getId() == id){
+                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
+                progress.setComplete(true);
+                Date dateNow = new Date(System.currentTimeMillis());
+                progress.setCompleteAt(dateNow);
+                progressRepository.save(progress);
+            }
+        }
+        u.setProgressOfScheduledTasks(prog);
+        applicationUserRepository.save(u);
+
+        return new RedirectView("/dashboard");
     }
 
     @GetMapping("/taskview/{groupId}")
