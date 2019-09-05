@@ -25,7 +25,7 @@ public class ScheduledTask {
     @ManyToOne
     CandidateGroup groupThisTaskBelongsTo;
 
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "taskRelatedToThisProgress")
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "taskRelatedToThisProgress", cascade = CascadeType.ALL)
     Set<Progress> progressRelatedToThisTask;
 
     public ScheduledTask(){}

@@ -35,7 +35,7 @@ public class ApplicationUser implements UserDetails {
     @ManyToOne
     public CandidateGroup groupThatCandidatesBelongTo;
 
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser")
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser", cascade = CascadeType.ALL)
     Set<Progress> ProgressOfScheduledTasks;
 
     //Constructor
