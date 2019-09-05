@@ -49,6 +49,15 @@ public class ScheduledTaskController {
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
             return new RedirectView("/fuckoff");
         }
+        if(nameOfTask != null){
+            taskToBeUpdated.setName(nameOfTask);
+        }
+        if(instructions != null){
+            taskToBeUpdated.setInstructions(instructions);
+        }
+        if(poc != null){
+            taskToBeUpdated.setPointOfContact(poc);
+        }
 //        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
         return new RedirectView("/dashboard");
