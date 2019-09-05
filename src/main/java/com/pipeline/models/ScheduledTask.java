@@ -6,6 +6,10 @@ import java.util.Set;
 @Entity
 public class ScheduledTask {
 
+    public String getLink() {
+        return link;
+    }
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     long id;

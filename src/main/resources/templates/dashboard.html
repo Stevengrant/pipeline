@@ -43,7 +43,7 @@
         <ul >
 
             <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
-                <span th:text="${task.taskRelatedToThisProgress.name}"></span>
+                <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
                 <div th:if="${!task.isComplete}">
                     <form  method="post" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
                 </div>
