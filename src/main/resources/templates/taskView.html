@@ -27,7 +27,25 @@
     <br>
     Instruction:<br>
     <input type="text" name="instructions" placeholder="instruction 1">
-    <button type="button" class="btn btn-primary">Add instruction</button>
+    <br>
+    <label >Task Link <input type="text" name="taskLink"></label>
+    <label >Point of Contact <input type="text" name="poc"></label>
+    <br>
+
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+
+</form>
+
+<form method="POST" th:action="${'/addtask/' + group.getId()}">
+    Task Name:<br>
+    <input type="text" name="nameOfTask" placeholder="Mickey">
+    <br>
+    Instruction:<br>
+    <input type="text" name="instructions" placeholder="instruction 1">
     <br>
     <label >Task Link <input type="text" name="taskLink"></label>
     <label >Point of Contact <input type="text" name="poc"></label>
