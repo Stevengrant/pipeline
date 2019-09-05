@@ -18,7 +18,8 @@
     <div th:each="group : ${loggedInUser.candidateGroup}">
         <a th:href="${'/registration/' + group.id}"> invite link</a>
     </div>
-    <div th:fragment="post">
+<!--    Admin Dashboard View-->
+    <div th:if="${loggedInUser.isAdmin}">
         <form method="POST" action="/addgroup">
             <div class="form-group">
                 <label for="groupName">Group Name: </label>
@@ -32,6 +33,10 @@
                 <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
             </li>
         </ul>
+    </div>
+<!--    Candidate dashboard view-->
+    <div th:unless="${loggedInUser.isAdmin}">
+        
     </div>
     <!--@{/groupview/{id}(id=${loggedInUser.candidateGroup.id})}-->
 </body>
