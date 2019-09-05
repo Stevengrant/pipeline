@@ -64,7 +64,7 @@ public class ApplicationUserController {
             Date due =new Date(System.currentTimeMillis() + 241920000);
             Progress newProgress = new Progress(false,due, null,newUser, tasks.get(i));
             progressRepository.save(newProgress);
-        }   
+        }
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new HashSet<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new RedirectView("/dashboard");
