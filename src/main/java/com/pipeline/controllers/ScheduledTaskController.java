@@ -38,15 +38,15 @@ public class ScheduledTaskController {
         ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc, taskLink, dueDate, group );
         group.setScheduledTasks(task);
         scheduledTaskRepository.save(task);
-        return new RedirectView("/dashboard");
+        return new RedirectView("/groupView/" + groupId);
     }
 
     //update
-    @PostMapping("/task/update/{id}")
-    public RedirectView updateTask(@PathVariable long id, Principal p, String nameOfTask, String instructions,
+    @PostMapping("/task/update/{taskId}")
+    public RedirectView updateTask(@PathVariable long taskId, Principal p, String nameOfTask, String instructions,
                                    String poc, Date dueDate) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-        ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(id).get();
+        ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(taskId).get();
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
             return new RedirectView("/error");
         }
@@ -59,12 +59,12 @@ public class ScheduledTaskController {
         if(poc != null){
             taskToBeUpdated.setPointOfContact(poc);
         }
-        if(dueDate != null && !dueDate.equals(taskToBeUpdated.getDueDate())) {
+        if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
             taskToBeUpdated.setDueDate(dueDate);
         }
 //        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
-        return new RedirectView("/dashboard");
+        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
 
     }
 
@@ -92,7 +92,7 @@ public class ScheduledTaskController {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeRemoved = scheduledTaskRepository.findById(id).get();
         if (!taskToBeRemoved.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
-            return new RedirectView("/fuckoff");
+            return new RedirectView("/error");
         }
         scheduledTaskRepository.delete(taskToBeRemoved);
         return new RedirectView("/dashboard");
