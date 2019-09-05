@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -40,6 +41,14 @@ public class CandidateGroupController {
 
     @GetMapping("/groupView")
     public String getGroupView(Principal p, Model m) {
+//        m.addAttribute("group", )
+        m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
+        return "groupView";
+    }
+
+    @GetMapping("/groupView/{groupId}")
+    public String getGroupView(@PathVariable long groupId, Principal p, Model m) {
+        m.addAttribute("group", candidateGroupRepository.findById(groupId).get());
         m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
         return "groupView";
     }

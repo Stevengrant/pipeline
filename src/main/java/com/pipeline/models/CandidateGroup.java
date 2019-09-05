@@ -27,7 +27,7 @@ public class CandidateGroup {
     @OneToMany
     Set<ScheduledTask> scheduledTasks;
 
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThisTaskBelongsTo")
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThisTaskBelongsTo", cascade = CascadeType.ALL)
     Set<ScheduledTask> tasksThatBelongToThisGroup;
 
     //Contsructors

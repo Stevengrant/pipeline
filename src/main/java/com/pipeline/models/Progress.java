@@ -6,11 +6,13 @@ import java.sql.Date;
 @Entity
 public class Progress {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    boolean isComplete;
+    public boolean isComplete;
     Date due;
     Date completeAt;
 
@@ -68,6 +70,8 @@ public class Progress {
     public void setTaskRelatedToThisProgress(ScheduledTask taskRelatedToThisProgress) {
         this.taskRelatedToThisProgress = taskRelatedToThisProgress;
     }
-
+    public long getId() {
+        return id;
+    }
 
 }

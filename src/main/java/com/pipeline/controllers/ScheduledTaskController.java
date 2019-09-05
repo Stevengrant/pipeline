@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,33 +22,35 @@ public class ScheduledTaskController {
     CandidateGroupRepository candidateGroupRepository;
     @Autowired
     ScheduledTaskRepository scheduledTaskRepository;
+    @Autowired
+    ProgressRepository progressRepository;
 
     //create
     @PostMapping("/addtask/{groupId}")
-    public RedirectView addTask(@PathVariable long groupId, Principal p, String nameOfTask, String instructions, String poc, String taskLink ){
+    public RedirectView addTask(@PathVariable long groupId, Principal p, String nameOfTask, String instructions,
+                                String poc, String taskLink, Date dueDate ){
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         CandidateGroup group = candidateGroupRepository.findById(groupId).get();
         //TODO: This might need some work
         //Checking to see if the person who's posting the new task is in fact the
         //owner of the group.
         if(!group.getOwner().equals(user)){
-            return new RedirectView("fuckoff");
+            return new RedirectView("error");
         }
-//        List instructionList = new List<String>();
-//        instructionList.add(instructions);
-        ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc, taskLink, group );
+        ScheduledTask task = new ScheduledTask(nameOfTask,instructions, poc, taskLink, dueDate, group );
         group.setScheduledTasks(task);
         scheduledTaskRepository.save(task);
-        return new RedirectView("/dashboard");
+        return new RedirectView("/groupView/" + groupId);
     }
 
     //update
-    @PostMapping("/task/update/{id}")
-    public RedirectView updateTask(@PathVariable long id, Principal p, String nameOfTask, String instructions, String poc) {
+    @PostMapping("/task/update/{taskId}")
+    public RedirectView updateTask(@PathVariable long taskId, Principal p, String nameOfTask, String instructions,
+                                   String poc, Date dueDate) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-        ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(id).get();
+        ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(taskId).get();
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
-            return new RedirectView("/fuckoff");
+            return new RedirectView("/error");
         }
         if(nameOfTask != null){
             taskToBeUpdated.setName(nameOfTask);
@@ -58,15 +61,38 @@ public class ScheduledTaskController {
         if(poc != null){
             taskToBeUpdated.setPointOfContact(poc);
         }
+        if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
+            taskToBeUpdated.setDueDate(dueDate);
+        }
 //        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
-        return new RedirectView("/dashboard");
+        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
 
+    }
+    @PostMapping("/task/markAsDone/{id}")
+    public RedirectView markScheduledTaskAsDone(@PathVariable Long id, Principal p){
+        ApplicationUser u = applicationUserRepository.findByUsername(p.getName());
+        Set<Progress> prog = u.getProgressOfScheduledTasks();
+        for (Progress progress : prog){
+            if(progress.getId() == id){
+                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
+                progress.setComplete(true);
+                Date dateNow = new Date(System.currentTimeMillis());
+                progress.setCompleteAt(dateNow);
+                progressRepository.save(progress);
+            }
+        }
+        u.setProgressOfScheduledTasks(prog);
+        applicationUserRepository.save(u);
+
+        return new RedirectView("/dashboard");
     }
 
     @GetMapping("/taskview/{groupId}")
-    public String getTaskView(@PathVariable long groupId, Model m){
+    public String getTaskView(@PathVariable long groupId, Model m, Principal p){
         CandidateGroup group = candidateGroupRepository.findById(groupId).get();
+        ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("loggedInUser", currUser);
         m.addAttribute("group", group);
         return "taskView";
     }
@@ -86,7 +112,7 @@ public class ScheduledTaskController {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeRemoved = scheduledTaskRepository.findById(id).get();
         if (!taskToBeRemoved.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
-            return new RedirectView("/fuckoff");
+            return new RedirectView("/error");
         }
         scheduledTaskRepository.delete(taskToBeRemoved);
         return new RedirectView("/dashboard");
