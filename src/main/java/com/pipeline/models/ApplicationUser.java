@@ -38,8 +38,7 @@ public class ApplicationUser implements UserDetails {
     public void setProgressOfScheduledTasks(Set<Progress> progressOfScheduledTasks) {
         ProgressOfScheduledTasks = progressOfScheduledTasks;
     }
-
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser")
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser", cascade = CascadeType.ALL)
     Set<Progress> ProgressOfScheduledTasks;
 
     //Constructor

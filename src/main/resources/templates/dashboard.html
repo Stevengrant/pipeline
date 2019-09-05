@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
     <!--Bootstrap Boilerplate-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -15,9 +18,7 @@
 </head>
 <body>
     <div th:replace="fragments/banner :: banner"></div>
-    <div th:each="group : ${loggedInUser.candidateGroup}">
-        <a th:href="${'/registration/' + group.id}"> invite link</a>
-    </div>
+
 <!--    Admin Dashboard View-->
     <div th:if="${loggedInUser.isAdmin}">
         <form method="POST" action="/addgroup">
@@ -35,6 +36,7 @@
             </li>
         </ul>
     </div>
+
 <!--    Candidate dashboard view-->
     <div th:unless="${loggedInUser.isAdmin}">
 
@@ -50,10 +52,9 @@
                 <div th:unless="${!task.isComplete}"> DONE</div>
             </li>
 
-<!--            th:action="${'/task/update/' + task.getId()}"-->
 
         </ul>
+
     </div>
-    <!--@{/groupview/{id}(id=${loggedInUser.candidateGroup.id})}-->
 </body>
 </html>

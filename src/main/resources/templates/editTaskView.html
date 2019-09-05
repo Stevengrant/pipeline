@@ -15,53 +15,50 @@
 </head>
 
 <body>
-
-<h2>Task View</h2>
-<h1><span th:text="${task.getName()}"></span></h1>
-
-<!--<li th:each="task : ${group.getScheduledTasks()}" class="list-group-item">-->
-<!--    <a th:href="${'/taskview/edit/' + group.id}"><span th:text="${task.getName()}"></span></h1></a>-->
-<!--</li>-->
-
-<form method="POST" th:action="${'/task/update/' + task.getId()}">
-    Task Name:<br>
-    <input type="text" name="nameOfTask" placeholder="task name">
-    <br>
-    Instruction:<br>
-    <input type="text" name="instructions" placeholder="instruction">
-    <button type="button" class="btn btn-primary">Add instruction</button>
-    <br><br>
-    Task link:<br>
-    <input type="text" name="taskLink" placeholder="www.google.com">
-    <br><br>
-    POC:<br>
-    <input type="text" name="poc" placeholder="Point Of Contact">
-    <br><br>
-
-
+    <div th:replace="fragments/banner :: banner"></div>
+    <h2>Task View</h2>
+    <h1><span th:text="${task.getName()}"></span></h1>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+
+    <!--Admin View-->
+    <div th:if="${loggedInUser.isAdmin}">
+        <form method="POST" th:action="${'/task/update/' + task.getId()}">
+            <h2>Task Name:</h2><br>
+            <input type="text" name="nameOfTask" placeholder="task name">
+            <br>
+            <h2>Instruction:</h2><br>
+            <input type="text" name="instructions" placeholder="instruction">
+            <h2>Task link:</h2><br>
+            <input type="text" name="taskLink" placeholder="www.google.com">
+            <br>
+            <h2>Due Date:</h2>
+            <input type="date" id="dueDate" name="dueDate">
+            <h2>POC:</h2><br>
+            <input type="text" name="poc" placeholder="Point Of Contact">
+            <br>
+            <button type="submit" class="btn btn-success">Save</button>
+            <br>
+        </form>
+        <form th:method="delete" th:action="${'/task/delete/' + task.getId()}">
+            <button type="submit" class="btn btn-danger">Delete Task</button>
+        </form>
+        <form method="GET" th:action="${'/dashboard'}" >
+            <button type="submit" class="btn btn-danger">Cancel</button>
+        </form>
     </div>
 
-</form>
-
-
-<!--<div class="form-group">-->
-<!--    <h1>To-Do <small>List</small></h1>-->
-<!--    <form role="form">-->
-<!--        <input type="text" class="form-control" placeholder="Your Task" name="task">-->
-<!--    </form>-->
-<!--    <button type="button" class="btn btn btn-primary">Add</button>-->
-<!--</div>-->
-<!--<div></div>-->
-<!--<ul class="list-unstyled" id="todo"></ul>-->
-
-
-
-
-<!--<script src="./js/taskView.js"></script>-->
+  
+     <!--Candidate View-->
+    <div th:unless="${loggedInUser.isAdmin}">
+        <form method="POST" th:action="${'/task/update/' + task.getId()}">
+            <h2>Task Name: <span th:text="${task.name}"></span></h2><br>
+            <h2>Instruction: <span th:text="${task.instructions}"></span></h2><br>
+            <h2>Task link: <span th:text="${task.link}"></span></h2><br>
+            <h2>Point of Contact: <span th:text="${task.pointOfContact}"></span></h2><br>
+        </form>
+    </div>
+</div>
+    <!--<script src="./js/taskView.js"></script>-->
 </body>
 </html>
 
