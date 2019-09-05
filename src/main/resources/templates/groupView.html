@@ -11,8 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="./css/taskView.css">
+    <link rel="stylesheet" href="./css/banner.css">
+
 </head>
 <body>
+    <div th:replace="fragments/banner :: banner"></div>
+
     <h1><span th:text="${group.getGroupName()}"></span></h1>
 <!--th:href="@{/task/{id}(id=${task.id})}"-->
 <!--    <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>-->
