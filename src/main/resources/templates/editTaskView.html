@@ -16,41 +16,34 @@
 
 <body>
 
-<h2>Task View</h2>
-<h1><span th:text="${task.getName()}"></span></h1>
-<div class="btn-group" role="group" aria-label="Basic example">
-
-    <form method="POST" th:action="${'/task/update/' + task.getId()}">
-        Task Name:<br>
-        <input type="text" name="nameOfTask" placeholder="task name">
-        <br>
-        Instruction:<br>
-        <input type="text" name="instructions" placeholder="instruction">
-        <button type="button" class="btn btn-primary">Add instruction</button>
-        <br><br>
-        Task link:<br>
-        <input type="text" name="taskLink" placeholder="www.google.com">
-        <br><br>
-        POC:<br>
-        <input type="text" name="poc" placeholder="Point Of Contact">
-        <br><br>
-
-        <button type="submit" class="btn btn-success">Save</button>
-        <br><br>
+    <h2>Task View</h2>
+    <h1><span th:text="${task.getName()}"></span></h1>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <form method="POST" th:action="${'/task/update/' + task.getId()}">
+            Task Name:<br>
+            <input type="text" name="nameOfTask" placeholder="task name">
+            <br>
+            Instruction:<br>
+            <input type="text" name="instructions" placeholder="instruction">
+            <button type="button" class="btn btn-primary">Add instruction</button>
+            <br><br>
+            Task link:<br>
+            <input type="text" name="taskLink" placeholder="www.google.com">
+            <br><br>
+            POC:<br>
+            <input type="text" name="poc" placeholder="Point Of Contact">
+            <br><br>
+            <button type="submit" class="btn btn-success">Save</button>
+            <br><br>
+        </form>
+        <form method="GET" th:action="${'/dashboard'}" >
+            <button type="submit" class="btn btn-danger">Cancel</button>
+        </form>
+    </div>
+    <form th:method="delete" th:action="${'/task/delete/' + task.getId()}">
+        <button type="submit" class="btn btn-danger">Delete Task</button>
     </form>
-
-    <form method="GET" th:action="${'/dashboard'}" >
-        <button type="submit" class="btn btn-danger">Cancel</button>
-    </form>
-
-
-
-</div>
-<form th:method="delete" th:action="${'/task/delete/' + task.getId()}">
-
-    <button type="submit" class="btn btn-danger">Delete Task</button>
-</form>
-<!--<script src="./js/taskView.js"></script>-->
+    <!--<script src="./js/taskView.js"></script>-->
 </body>
 </html>
 
