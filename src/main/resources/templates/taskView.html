@@ -16,32 +16,46 @@
 
 <body>
 
-<h2>Task View</h2>
-<h1><span th:text="${group.getGroupName()}"></span></h1>
+    <h2>Task View</h2>
+    <h1><span th:text="${group.getGroupName()}"></span></h1>
 
-<!--nameOfTask, String instructions, String poc-->
+    <!--nameOfTask, String instructions, String poc-->
 
-<form method="POST" th:action="${'/addtask/' + group.getId()}">
-    Task Name:<br>
-    <input type="text" name="nameOfTask" placeholder="Mickey">
-    <br>
-    Instruction:<br>
-    <input type="text" name="instructions" placeholder="instruction 1">
-    <button type="button" class="btn btn-primary">Add instruction</button>
-    <br>
-    <label >Task Link <input type="text" name="taskLink"></label>
-    <label >Point of Contact <input type="text" name="poc"></label>
-    <br>
+    <form method="POST" th:action="${'/addtask/' + group.getId()}">
+        Task Name:<br>
+        <input type="text" name="nameOfTask" placeholder="Mickey">
+        <br>
+        Instruction:<br>
+        <input type="text" name="instructions" placeholder="instruction 1">
+        <br>
+        <label >Task Link <input type="text" name="taskLink"></label>
+        <label >Point of Contact <input type="text" name="poc"></label>
+        <br>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+    </form>
 
+    <form method="POST" th:action="${'/addtask/' + group.getId()}">
+        Task Name:<br>
+        <input type="text" name="nameOfTask" placeholder="Mickey">
+        <br>
+        Instruction:<br>
+        <input type="text" name="instructions" placeholder="instruction 1">
+        <br>
+        <label >Task Link <input type="text" name="taskLink"></label>
+        <label >Point of Contact <input type="text" name="poc"></label>
+        <br>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-success">Save</button>
+            <form method="GET" th:action="${'/dashboard'}" >
+                <button type="submit" class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger">Delete</button>
-    </div>
-
-</form>
-
-<!--<script src="./js/taskView.js"></script>-->
+    </form>
+    <!--<script src="./js/taskView.js"></script>-->
 </body>
 </html>
 

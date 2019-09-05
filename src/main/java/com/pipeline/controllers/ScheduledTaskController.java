@@ -64,6 +64,20 @@ public class ScheduledTaskController {
 
     }
 
+    @GetMapping("/taskview/{groupId}")
+    public String getTaskView(@PathVariable long groupId, Model m){
+        CandidateGroup group = candidateGroupRepository.findById(groupId).get();
+        m.addAttribute("group", group);
+        return "taskView";
+    }
+
+    @GetMapping("/taskview/edit/{taskId}")
+    public String getTaskViewEdit(@PathVariable long taskId, Model m){
+        ScheduledTask task = scheduledTaskRepository.findById(taskId).get();
+        m.addAttribute("task", task);
+        return "editTaskView";
+    }
+
     //delete
 
     @DeleteMapping("/task/delete/{id}")
