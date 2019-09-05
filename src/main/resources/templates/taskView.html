@@ -15,45 +15,25 @@
 </head>
 
 <body>
-
+    <div th:replace="fragments/banner :: banner"></div>
     <h2>Task View</h2>
     <h1><span th:text="${group.getGroupName()}"></span></h1>
 
-    <!--nameOfTask, String instructions, String poc-->
-
     <!--Admin user view-->
     <form th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">        Task Name:<br>
-        <input type="text" name="nameOfTask" placeholder="Mickey">
-        <br>
-        Instruction:<br>
-        <input type="text" name="instructions" placeholder="instruction 1">
-        <br>
-        <label >Task Link <input type="text" name="taskLink"></label>
-        <label >Point of Contact <input type="text" name="poc"></label>
-        <br>
+        <label>Task Name: <input type="text" name="nameOfTask" placeholder="Mickey"></label><br>
+
+        <label>Instruction: <input type="text" name="instructions" placeholder="instruction 1"></label><br>
+        <label>Task Link <input type="text" name="taskLink"></label><br>
+        <label>Due Date: <input type="date" name="dueDate" id="dueDate"></label><br>
+        <label >Point of Contact <input type="text" name="poc"></label><br>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="submit" class="btn btn-success">Save</button>
             <button type="button" class="btn btn-danger">Delete</button>
-        </div>
-    </form>
-
-    <form method="POST" th:action="${'/addtask/' + group.getId()}">
-        Task Name:<br>
-        <input type="text" name="nameOfTask" placeholder="Mickey">
-        <br>
-        Instruction:<br>
-        <input type="text" name="instructions" placeholder="instruction 1">
-        <br>
-        <label >Task Link <input type="text" name="taskLink"></label>
-        <label >Point of Contact <input type="text" name="poc"></label>
-        <br>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-success">Save</button>
             <form method="GET" th:action="${'/dashboard'}" >
                 <button type="submit" class="btn btn-danger">Cancel</button>
             </form>
         </div>
-
     </form>
   
 <!--Candidate user view-->
