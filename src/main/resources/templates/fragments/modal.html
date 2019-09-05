@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -22,17 +22,19 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add a new member to this group.</h4>
                     </div>
+                    <!--<div th:each="group : ${loggedInUser.candidateGroup}">-->
+                        <!--<a th:href="${'/registration/' + group.id}"></a>-->
+                    <!--</div>-->
                     <div class="modal-body">
                         <form method="POST" action="/addMember">
                             <div class="form-group">
                                 <label for="memberEmail">Member Email: </label>
-                                <textarea class="form-control" name="memberEmail" id="memberEmail" aria-describedby="createMember" placeholder="someemailaddresshere..."></textarea>
-                                <small id="createMember" class="form-text text-muted">Send your new group member a link to the site.</small>
+                                <p class="form-control" name="memberEmail" id="memberEmail" aria-describedby="createMember" th:text="${'/registration/' + loggedInUser.candidateGroup.id}"></p>
+                                <small id="createMember" class="form-text text-muted">Send your new group member this link to the site.</small>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Send Link</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
