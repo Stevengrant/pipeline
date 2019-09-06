@@ -7,69 +7,58 @@
     <!--Bootstrap Boilerplate-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/banner.css">
+    <link rel="stylesheet" href="/css/registration.css">
+
+
+
 
 </head>
 
-<body style="background-color:#EDC7B7;">
-<form th:if="${isCandidate}" method="POST" th:action="${'/users/' + groupId}">
-    <div style="background-color:#123C69; height:480px; width:400px; border-radius:30px; text-align:center;" class="col-md-offset-4">
-        <h1 style="text-align:center; padding-top:30px; color:#ffffff;">Register</h1>
+<body>
+<div th:replace="fragments/banner :: banner"></div>
+<div >
+    <form th:if="${isCandidate}" class="box" method="POST" th:action="${'/users/' + groupId}">
+        <h1>Register</h1>
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" style="border-radius:15px;" required>
-        </div>
-
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" style="border-radius:15px;" required>
-        </div>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName"  required>
 
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username" style="border-radius:15px;" required>
-        </div>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName"  required>
 
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="password" class="form-control" id="password" placeholder="Type your Password" name="password" style="border-radius:15px;" required>
-        </div>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username"  required>
 
 
-        <button class="col-md-4 col-md-offset-4 btn" style="background-color:#ffffff; color:#626a69; font-size:20px; margin-top:10px;" type="submit"> Submit
+            <input type="password" class="form-control" id="password" placeholder="Type your Password" name="password"  required>
+
+
+        <button type="submit"> Submit
         </button>
-    </div>
 
 </form>
 
-<form th:unless="${isCandidate}" method="POST" action="/users">
-    <div style="background-color:#123C69; height:480px; width:400px; border-radius:30px; text-align:center;" class="col-md-offset-4">
-        <h1 style="text-align:center; padding-top:30px; color:#ffffff;">Register</h1>
+    <form th:unless="${isCandidate}" class="box" method="POST" action="/users">
+        <h1 >Register</h1>
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" style="border-radius:15px;">
-        </div>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" >
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" style="border-radius:15px;">
-        </div>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" >
 
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username" style="border-radius:15px;">
-        </div>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username" >
 
 
-        <div class="col-sm-12" style="padding-top:10px;">
-            <input type="password" class="form-control" id="password" placeholder="Type your Password" name="password" style="border-radius:15px;">
-        </div>
+            <input type="password" class="form-control" id="password" placeholder="Type your Password" name="password" >
 
 
-        <button class="col-md-4 col-md-offset-4 btn" style="background-color:#ffffff; color:#626a69; font-size:20px; margin-top:10px;" type="submit"> Submit
+        <button  type="submit"> Submit
         </button>
-    </div>
-
 </form>
+</div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </html>
 
