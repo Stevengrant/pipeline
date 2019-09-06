@@ -1,5 +1,5 @@
 # Team: Cavalier
-## Brandon Hurrington, Chris Coulon, Steve Grant & Manish KC
+#### Brandon Hurrington, Chris Coulon, Steve Grant & Manish KC
 
 # Project Name: PipeLine
 # Overview:
