@@ -64,9 +64,8 @@ public class ScheduledTaskController {
         if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
             taskToBeUpdated.setDueDate(dueDate);
         }
-//        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
-        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
+        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo().getId());
 
     }
     @PostMapping("/task/markAsDone/{id}")
