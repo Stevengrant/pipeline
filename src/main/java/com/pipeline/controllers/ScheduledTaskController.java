@@ -64,9 +64,8 @@ public class ScheduledTaskController {
         if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
             taskToBeUpdated.setDueDate(dueDate);
         }
-//        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
-        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
+        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo().getId());
 
     }
     @PostMapping("/task/markAsDone/{id}")
@@ -94,6 +93,7 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("loggedInUser", currUser);
         m.addAttribute("group", group);
+        m.addAttribute("status", true);
         return "taskView";
     }
 
@@ -103,7 +103,8 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("task", task);
         m.addAttribute("loggedInUser", currUser);
-        return "editTaskView";
+        m.addAttribute("status", false);
+        return "taskView";
     }
 
     //delete
