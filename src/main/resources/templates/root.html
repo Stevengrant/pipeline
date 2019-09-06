@@ -29,7 +29,7 @@
 
         <div class="register-info-box">
             <h2>Don't have an account?</h2>
-            <p>Get started now!!</p>
+            <p>Get started now!</p>
             <label id="label-login" for="log-login-show">Register</label>
             <input type="radio" name="active-log-panel" id="log-login-show">
         </div>
@@ -40,8 +40,7 @@
                     <h2>LOGIN</h2>
                     <input class="input-fields" type="text" id="username" name="username" placeholder="User Name" required>
                     <input class="input-fields" type="password" id="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Login">
-                    <!--<a href="">Forgot password?</a>-->
+                    <input type="submit" value="Login" id="login-button">
                 </div>
             </form>
 
@@ -52,7 +51,7 @@
                     <input class="input-fields" type="text" placeholder="Last Name" name="lastName" required>
                     <input class="input-fields" type="text" placeholder="User Name" name="username" required>
                     <input class="input-fields" type="password" placeholder="Password" name="password" required>
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Register" id="register-button">
                 </div>
             </form>
 <!--            <form th:if="${isCandate}" method="POST" th:action="${'/users/' + groupId}">-->
@@ -71,3 +70,6 @@
 
 </body>
 </html>
+
+<!--Resources-->
+<!--https://bootsnipp.com/snippets/92gmX-->

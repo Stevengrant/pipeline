@@ -24,11 +24,13 @@ An app to track the progress through the Amazon Apprenticeship program, includin
 - CRUD achieved on tasks
 - Auth completed using Spring
 
-# Technical Components (Brandon will add this)
-- List out controllers?
-- List out models?
-- List out templates?
-- Technologies used?
+# Technical Components 
+- Java-Spring MVC Framework
+- Thymeleaf
+- Postgres DB
+- Bootstrap
+- Google Fonts
+- Font Awesome
 
 # Test
     - Test for Getters and Setters are implemented.
