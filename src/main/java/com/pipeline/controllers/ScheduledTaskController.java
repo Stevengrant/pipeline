@@ -94,6 +94,7 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("loggedInUser", currUser);
         m.addAttribute("group", group);
+        m.addAttribute("status", true);
         return "taskView";
     }
 
@@ -103,7 +104,8 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("task", task);
         m.addAttribute("loggedInUser", currUser);
-        return "editTaskView";
+        m.addAttribute("status", false);
+        return "taskView";
     }
 
     //delete
