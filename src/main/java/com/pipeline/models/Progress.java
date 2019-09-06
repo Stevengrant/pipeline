@@ -6,8 +6,6 @@ import java.sql.Date;
 @Entity
 public class Progress {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
