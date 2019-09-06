@@ -22,11 +22,10 @@
     <!--Admin user view-->
     <form th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">        Task Name:<br>
         <label>Task Name: <input type="text" name="nameOfTask" placeholder="Name Of Task"></label><br>
-
-        <label>Instructions <input type="text" name="instructions" placeholder="Text instructions"></label><br>
-        <label>Link <input type="text" name="taskLink"></label><br>
-        <label>Due Date <input type="date" name="dueDate" id="dueDate"></label><br>
-        <label >Point of Contact <input type="text" name="poc"></label><br>
+        <label>Instructions <input type="text" name="instructions" placeholder="Text instructions" required></label><br>
+        <label>Link <input type="text" name="taskLink" required></label><br>
+        <label>Due Date <input type="date" name="dueDate" id="dueDate" required></label><br>
+        <label >Point of Contact <input type="text" name="poc" required></label><br>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="submit" class="btn btn-success">Save</button>
             <form method="GET" th:action="${'/dashboard'}" >

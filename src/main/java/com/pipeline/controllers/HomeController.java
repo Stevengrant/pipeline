@@ -84,6 +84,11 @@ public class HomeController {
         return "taskView";
     }
 
+    @GetMapping("/aboutUs")
+    public String getAboutUs() {
+        return "aboutUs";
+    }
+
 
     //Testing purpose front end
 

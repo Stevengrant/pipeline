@@ -13,9 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/root.css">
-    <link rel="stylesheet" href="./css/banner.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/banner.css">
 
 </head>
 <body id="screen-container">
@@ -38,8 +38,8 @@
             <form method="POST" action="/login" >
                 <div class="login-show">
                     <h2>LOGIN</h2>
-                    <input class="input-fields" type="text" id="username" name="username" placeholder="User Name">
-                    <input class="input-fields" type="password" id="password" name="password" placeholder="Password">
+                    <input class="input-fields" type="text" id="username" name="username" placeholder="User Name" required>
+                    <input class="input-fields" type="password" id="password" name="password" placeholder="Password" required>
                     <input type="submit" value="Login">
                     <!--<a href="">Forgot password?</a>-->
                 </div>
@@ -48,10 +48,10 @@
             <form method="POST" action="/users">
                 <div class="register-show">
                     <h2>REGISTER</h2>
-                    <input class="input-fields" type="text" placeholder="First Name" name="firstName">
-                    <input class="input-fields" type="text" placeholder="Last Name" name="lastName">
-                    <input class="input-fields" type="text" placeholder="User Name" name="username">
-                    <input class="input-fields" type="password" placeholder="Password" name="password">
+                    <input class="input-fields" type="text" placeholder="First Name" name="firstName" required>
+                    <input class="input-fields" type="text" placeholder="Last Name" name="lastName" required>
+                    <input class="input-fields" type="text" placeholder="User Name" name="username" required>
+                    <input class="input-fields" type="password" placeholder="Password" name="password" required>
                     <input type="submit" value="Register">
                 </div>
             </form>
