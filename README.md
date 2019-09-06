@@ -1,9 +1,13 @@
 # Team: Cavalier
-# Members: Brandon Hurrington, Chris Coulon, Steve Grant & Manish KC
+# Members: 
+Brandon Hurrington, Chris Coulon, Steve Grant & Manish KC
 
-# Project Name: PipeLine
-# Overview: : An app to track the progress through the Amazon Apprenticeship program, including milestones, significant dates, documents, and benchmarks. 
-# Link to the project: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.com/
+# Project Name: 
+PipeLine
+# Overview:
+An app to track the progress through the Amazon Apprenticeship program, including milestones, significant dates, documents, and benchmarks. 
+
+Link to the project: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.com/
 
 # Core Implementations:
 - An admin could register on the app.
