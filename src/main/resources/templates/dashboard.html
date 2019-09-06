@@ -41,31 +41,28 @@
                 </li>
             </ul>
         </div>
-
     </div>
 
 <!--    Candidate dashboard view-->
     <div th:unless="${loggedInUser.isAdmin}" id="candidate-view">
-        <h2 id="greeting">Hello, <span th:text="${loggedInUser.firstName}"> </span></h2>
-        <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}" id="group-affiliation"></h4>
-
-<!--    Candidate dashboard view-->
-    <div th:unless="${loggedInUser.isAdmin}">
-
-        <h2>Hello, <span th:text="${loggedInUser.firstName}"> </span></h2>
-        <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}"></h4>
-        <ul >
-
-            <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
-                <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
-                <div th:if="${!task.isComplete}">
-                    <form  method="post" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
+        <div class="card" style="width: 28rem;" id="candidate-details-card">
+            <div class="card-body">
+                <h5 class="card-title" id="greeting">Hello, <span th:text="${loggedInUser.firstName} + ."></span></h5>
+                <div class="card-text">
+                    <h4>Group Membership:</h4>
+                    <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}" id="group-affiliation"></h4>
+                    <ul >
+                        <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
+                            <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
+                            <div th:if="${!task.isComplete}">
+                                <form  method="POST" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
+                            </div>
+                            <div th:unless="${!task.isComplete}"> DONE</div>
+                        </li>
+                    </ul>
                 </div>
-                <div th:unless="${!task.isComplete}"> DONE</div>
-            </li>
-
-
-        </ul>
+            </div>
+        </div>
 
     </div>
 </body>
