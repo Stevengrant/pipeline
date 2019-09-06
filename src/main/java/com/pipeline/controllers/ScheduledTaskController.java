@@ -46,7 +46,7 @@ public class ScheduledTaskController {
     //update
     @PostMapping("/task/update/{taskId}")
     public RedirectView updateTask(@PathVariable long taskId, Principal p, String nameOfTask, String instructions,
-                                   String poc, Date dueDate) {
+                                   String poc, Date dueDate, String taskLink) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(taskId).get();
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
@@ -55,13 +55,17 @@ public class ScheduledTaskController {
         if(nameOfTask != null){
             taskToBeUpdated.setName(nameOfTask);
         }
+        if (taskLink != null) {
+            taskToBeUpdated.setLink(taskLink);
+        }
         if(instructions != null){
             taskToBeUpdated.setInstructions(instructions);
         }
         if(poc != null){
             taskToBeUpdated.setPointOfContact(poc);
         }
-        if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
+
+        if(dueDate != null) {
             taskToBeUpdated.setDueDate(dueDate);
         }
         scheduledTaskRepository.save(taskToBeUpdated);

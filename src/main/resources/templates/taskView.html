@@ -73,15 +73,15 @@
                 <div class="card-body">
                     <form class="card-text" method="POST" th:action="${'/task/update/' + task.getId()}">
                         <h2 class="input-labels">Task Name:</h2>
-                        <input class="input-fields" type="text" name="nameOfTask" placeholder="task name" required>
+                        <input class="input-fields" type="text" name="nameOfTask" th:value="${task.getName()}">
                         <h2 class="input-labels">Instruction:</h2>
-                        <input class="input-fields" type="text" name="instructions" placeholder="instruction" required>
+                        <input class="input-fields" type="text" name="instructions" th:value="${task.getInstructions()}">
                         <h2 class="input-labels">Task link:</h2>
-                        <input class="input-fields" type="text" name="taskLink" placeholder="www.google.com" required>
+                        <input class="input-fields" type="text" name="taskLink" th:value="${task.getLink()}">
                         <h2 class="input-labels">Due Date:</h2>
-                        <input class="input-fields" type="date" id="dueDate" name="dueDate" required>
+                        <input class="input-fields" type="date" id="dueDate" th:value="${task.getDueDate()}">
                         <h2 class="input-labels">Point of Contact: </h2>
-                        <input class="input-fields" type="text" name="poc" placeholder="Point Of Contact" required>
+                        <input class="input-fields" type="text" name="poc" th:value="${task.getPointOfContact()}">
                         <div class="btn-group form-group" role="group" >
                             <button type="submit" class="btn btn-success">Save</button>
                             <form method="GET" th:action="${'/dashboard'}" >
