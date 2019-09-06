@@ -94,4 +94,20 @@ public class ScheduledTask {
     public String getLink() {
         return link;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setGroupThisTaskBelongsTo(CandidateGroup groupThisTaskBelongsTo) {
+        this.groupThisTaskBelongsTo = groupThisTaskBelongsTo;
+    }
+
+    public void setProgressRelatedToThisTask(Set<Progress> progressRelatedToThisTask) {
+        this.progressRelatedToThisTask = progressRelatedToThisTask;
+    }
 }
