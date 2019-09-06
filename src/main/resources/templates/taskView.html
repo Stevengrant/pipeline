@@ -22,7 +22,7 @@
 
     <!--Admin user view-->
     <form th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">        Task Name:<br>
-        <label>Task Name: <input type="text" name="nameOfTask" placeholder="Mickey" required></label><br>
+        <label>Task Name: <input type="text" name="nameOfTask" placeholder="Task 1" required></label><br>
 
         <label>Instruction: <input type="text" name="instructions" placeholder="instruction 1" required></label><br>
         <label>Task Link <input type="text" name="taskLink" ></label><br>
