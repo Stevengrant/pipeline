@@ -18,7 +18,6 @@ Link to the project: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.co
 
 
 # Project Components
-- 
 
 1. Build a RESTful API that is a usable product.
     - Must have at least 2 models, likely related, with data stored in a database.
