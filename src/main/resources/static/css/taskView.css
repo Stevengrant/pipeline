@@ -42,6 +42,27 @@
     margin: .25em;
 }
 
+#edit-buttons-container {
+    margin: .25em;
+}
+
+#save-button {
+    color: #359692;
+    background-color: #354C71;
+    border: none;
+    margin-top: 1em;
+}
+
+#cancel-button {
+    color: #359692;
+    border: none;
+    margin-top: 1em;
+}
+
+.edit-buttons {
+    margin: 1em;
+}
+
 .input-labels {
 
 }

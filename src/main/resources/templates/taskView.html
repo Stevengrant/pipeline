@@ -19,7 +19,7 @@
 </head>
 
 <body id="screen-container">
-    <!--Create task view ends.-->
+    <!--Create task view begins.-->
     <div th:if="${status}">
         <div th:replace="fragments/banner :: banner"></div>
 
@@ -36,7 +36,7 @@
                         <label>Due Date: <input class="input-fields" type="date" name="dueDate" id="dueDate" required></label><br>
                         <label >Point of Contact <input class="input-fields" type="text" name="poc" required></label><br>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="submit" class="btn btn-success task-buttons">Save</button>
+                            <button type="submit" class="btn btn-success task-buttons" id="save-button">Save</button>
                             <form method="GET" th:action="${'/dashboard'}" >
                             </form>
                         </div>
@@ -82,10 +82,10 @@
                         <input class="input-fields" type="date" id="dueDate" name="dueDate" required>
                         <h2 class="input-labels">Point of Contact: </h2>
                         <input class="input-fields" type="text" name="poc" placeholder="Point Of Contact" required>
-                        <div class="btn-group form-group" role="group" >
-                            <button type="submit" class="btn btn-success">Save</button>
+                        <div class="btn-group form-group" role="group" id="edit-buttons-container">
+                            <button type="submit" class="btn btn-success edit-buttons" id="save-button">Save</button>
                             <form method="GET" th:action="${'/dashboard'}" >
-                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                <button type="submit" class="btn btn-warning edit-buttons" id="cancel-button">Cancel</button>
                             </form>
                         </div>
                     </form>
