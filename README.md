@@ -24,13 +24,14 @@ An app to track the progress through the Amazon Apprenticeship program, includin
 - CRUD achieved on tasks
 - Auth completed using Spring
 
-# Technical Components
+# Technical Components (Brandon will add this)
 - List out controllers?
 - List out models?
 - List out templates?
 - Technologies used?
 
-# Test (Steve will add this)
-    - Must contain unit tests for all getters and setters, as well as any utility methods.
-    - Must contain integration tests for at least all non-authenticated GET request endpoints.
+# Test
+    - Test for Getters and Setters are implemented.
+    - Public get routes have test cases.
+    - Multiple test files from all the models including constructors have test cases. 
 
