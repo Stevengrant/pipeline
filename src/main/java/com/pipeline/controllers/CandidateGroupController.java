@@ -27,7 +27,7 @@ public class CandidateGroupController {
     public RedirectView addGroup(String groupName, Principal p){
         ApplicationUser owner = applicationUserRepository.findByUsername(p.getName());
         if(!owner.isAdmin()){
-            return new RedirectView("/fuckoff");
+            return new RedirectView("/error");
         }
         CandidateGroup newGroup = new CandidateGroup(groupName,owner);
         candidateGroupRepository.save(newGroup);

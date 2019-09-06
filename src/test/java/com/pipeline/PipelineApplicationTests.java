@@ -11,6 +11,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+//Must contain unit tests for all getters and setters, as well as any utility methods.
+//Must contain integration tests for at least all non-authenticated GET request endpoints.
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,6 +24,7 @@ public class PipelineApplicationTests {
 	public void contextLoads() {
 	}
 		@Test public void testHomePage_containsUsername() throws Exception {
+		//Root/index
 			this.mockMvc
 					.perform(MockMvcRequestBuilders.get("/"))
 					.andDo(MockMvcResultHandlers.print())
@@ -28,13 +32,15 @@ public class PipelineApplicationTests {
 							org.hamcrest.Matchers.containsString("LOGIN")
 					));
 		}
-		@Test public void testRegistrationPage() throws Exception {
-			this.mockMvc
-					.perform(MockMvcRequestBuilders.get("/registration"))
-					.andDo(MockMvcResultHandlers.print())
-					.andExpect((MockMvcResultMatchers.content().string(
-							org.hamcrest.Matchers.containsString("Register")
-					)));
+
+	@Test public void testRegistrationPage() throws Exception {
+		//registration
+		this.mockMvc
+				.perform(MockMvcRequestBuilders.get("/registration"))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect((MockMvcResultMatchers.content().string(
+						org.hamcrest.Matchers.containsString("Register")
+				)));
 		}
 }
 

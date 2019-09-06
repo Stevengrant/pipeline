@@ -9,9 +9,6 @@ import java.util.Set;
 
 @Entity
 public class CandidateGroup {
-
-
-
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     long id;
@@ -22,10 +19,14 @@ public class CandidateGroup {
     ApplicationUser owner;
 
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThatCandidatesBelongTo")
-    Set<ApplicationUser> candidatesInAGroup;
+    public Set<ApplicationUser> candidatesInAGroup;
 
     @OneToMany
     Set<ScheduledTask> scheduledTasks;
+
+    public void setTasksThatBelongToThisGroup(Set<ScheduledTask> tasksThatBelongToThisGroup) {
+        this.tasksThatBelongToThisGroup = tasksThatBelongToThisGroup;
+    }
 
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThisTaskBelongsTo", cascade = CascadeType.ALL)
     Set<ScheduledTask> tasksThatBelongToThisGroup;
