@@ -31,20 +31,23 @@ public class PipelineApplicationTests {
 		//GET
 		//"/registration"
 		@Test public void testRegistrationPage() throws Exception {
-			this.mockMvc
-					.perform(MockMvcRequestBuilders.get("/registration"))
-					.andDo(MockMvcResultHandlers.print())
-					.andExpect((MockMvcResultMatchers.content().string(
-							org.hamcrest.Matchers.containsString("Register")
-					)));
+		///registration"
+		this.mockMvc
+				.perform(MockMvcRequestBuilders.get("/registration"))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect((MockMvcResultMatchers.content().string(
+						org.hamcrest.Matchers.containsString("Register")
+				)));
 		}
-
-		//"/"
-	///registration/*"
-	///registration"
-		//POST
-		//"/users",
-		//"/users/*"
+		//@GetMapping ("/creategroup")
+		//@GetMapping("/groupView")
+		//@GetMapping("/groupView/{groupId}")
+		//@GetMapping("/login")
+		//@GetMapping("/registration/{id}")
+		//@GetMapping("/registration")
+		//@GetMapping("/dashboard")
+		//@GetMapping("/logout")
+		//@GetMapping("/groupview")
 }
 
 
