@@ -11,7 +11,7 @@
     flex-direction: row;
 }
 
-/*#candidate-view {
+#candidate-view {
     display: flex;
     flex-direction: row;
     color: #354C71;
@@ -19,7 +19,7 @@
     border: .05em solid #354C71;
     margin: 1em;
     padding: 1em;
-}*/
+}
 
 #group-name-input {
     background-color: #963542;
@@ -57,7 +57,6 @@
 }
 
 #create-group-button {
-    margin-top: 1em;
 }
 
 #create-group-button {
@@ -65,6 +64,7 @@
     background-color: #354C71;
     border-color: #963542;
     border: none;
+    margin-top: 1em;
 }
 
 #greeting {
