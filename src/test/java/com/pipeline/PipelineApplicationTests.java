@@ -28,6 +28,8 @@ public class PipelineApplicationTests {
 							org.hamcrest.Matchers.containsString("LOGIN")
 					));
 		}
+		//GET
+		//"/registration"
 		@Test public void testRegistrationPage() throws Exception {
 			this.mockMvc
 					.perform(MockMvcRequestBuilders.get("/registration"))
@@ -36,6 +38,13 @@ public class PipelineApplicationTests {
 							org.hamcrest.Matchers.containsString("Register")
 					)));
 		}
+
+		//"/"
+	///registration/*"
+	///registration"
+		//POST
+		//"/users",
+		//"/users/*"
 }
 
 
