@@ -4,7 +4,6 @@ Project Name: PipeLine
 # Overview:
 An app to track the progress through the Amazon Apprenticeship program, including milestones, significant dates, documents, and benchmarks. 
 
-Link to the project: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.com/
 
 # Core Implementations:
 - An admin could register on the app.
@@ -17,28 +16,19 @@ Link to the project: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.co
 
 
 
-# Project Components
+# Project Requirements
+- Screen Shots 
+- Link to the deployed application: http://team-cavalier-pipeline.us-east-2.elasticbeanstalk.com/
+- CRUD achieved on tasks
+- Auth completed using Spring
 
-1. Build a RESTful API that is a usable product.
-    - Must have at least 2 models, likely related, with data stored in a database.
-    - Must have views for HTML, JSON, or any combination of the two.
-    - Must have at least 2 controller files, with full CRUD on at least one resource.
-    - Should most likely contain Auth using Spring.
-        - Exception: if you really want to build something hardware-related instead of a web app
+# Technical Components
+- List out controllers?
+- List out models?
+- List out templates?
+- Technologies used?
 
-2. Document your application.
-    - Include a README.md file with:
-        - An overview of the application and its functionality
-        - Screenshots of the application
-        - A link to the deployed application
-        - A list of technologies used in the application
-        - Directions to clone the repo and get the application running on your own computer
-    - Include relevant comments in your code.
-        - Do NOT include irrelevant comments or dead code in your application.
-
-3. Test your application.
+# Test (Steve will add this)
     - Must contain unit tests for all getters and setters, as well as any utility methods.
     - Must contain integration tests for at least all non-authenticated GET request endpoints.
 
-4. Deploy your application to the world.
-    - Your application must be available at a custom domain name, using AWS ElasticBeanstalk or similar.
