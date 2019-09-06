@@ -14,11 +14,6 @@
 #candidate-view {
     display: flex;
     flex-direction: row;
-    color: #354C71;
-    background-color: #359692;
-    border: .05em solid #354C71;
-    margin: 1em;
-    padding: 1em;
 }
 
 #group-name-input {
@@ -57,6 +52,14 @@
 }
 
 #create-group-button {
+    color: #359692;
+    background-color: #354C71;
+    border-color: #963542;
+    border: none;
+    margin-top: 1em;
+}
+
+#task-buttons {
     color: #359692;
     background-color: #354C71;
     border-color: #963542;
