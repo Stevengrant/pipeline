@@ -67,9 +67,10 @@ public class HomeController {
 
 
     @GetMapping("/groupview/{groupId}")
-    public String getSingleGroupView(@PathVariable long groupId, Model m){
+    public String getSingleGroupView(@PathVariable long groupId, Principal p, Model m){
         CandidateGroup group = candidateGroupRepository.findById(groupId).get();
         m.addAttribute("group", group);
+        m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
         return "groupView";
     }
 
