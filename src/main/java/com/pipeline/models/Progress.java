@@ -21,6 +21,7 @@ public class Progress {
     ScheduledTask taskRelatedToThisProgress;
 
     public Progress(){}
+
     public Progress (boolean isComplete, Date due, Date completeAt, ApplicationUser applicationUser,ScheduledTask scheduledTask){
         this.isComplete = isComplete;
         this.due = due;
