@@ -36,12 +36,14 @@ public class HomeController {
     public RedirectView getLogin(){
         return new RedirectView("/");
     }
+
     @GetMapping("/registration/{id}")
     public String getRegistration(@PathVariable long id, Model m){
         m.addAttribute("isCandidate",true);
         m.addAttribute("groupId", id);
         return "registration";
     }
+
     @GetMapping("/registration")
     public String getRegistration(Model m){
         m.addAttribute("isCandidate",false);
@@ -62,14 +64,11 @@ public class HomeController {
         return "root";
     }
 
-
-//Testing purpose front end
     @GetMapping("/groupview")
     public String getGroupView(){
 
         return "groupView";
     }
-
 
     @GetMapping("/groupview/{groupId}")
     public String getSingleGroupView(@PathVariable long groupId, Principal p, Model m){
@@ -88,9 +87,5 @@ public class HomeController {
     public String getAboutUs() {
         return "aboutUs";
     }
-
-
-    //Testing purpose front end
-
 
 }

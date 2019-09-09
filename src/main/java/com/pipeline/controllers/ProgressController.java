@@ -16,6 +16,7 @@ public class ProgressController {
 
     @Autowired
     ProgressRepository progressRepository;
+
     //update/complete
     @PostMapping("/progress/update/{progressTaskId}")
     public RedirectView updateProgress(@PathVariable long progressTaskId, boolean isComplete, Date due){

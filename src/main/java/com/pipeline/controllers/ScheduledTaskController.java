@@ -68,6 +68,7 @@ public class ScheduledTaskController {
         return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo().getId());
 
     }
+
     @PostMapping("/task/markAsDone/{id}")
     public RedirectView markScheduledTaskAsDone(@PathVariable Long id, Principal p){
         ApplicationUser u = applicationUserRepository.findByUsername(p.getName());
@@ -107,7 +108,6 @@ public class ScheduledTaskController {
         return "taskView";
     }
 
-    //delete
     @DeleteMapping("/task/delete/{id}")
     public RedirectView deleteTask(@PathVariable long id, Principal p) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
@@ -118,8 +118,6 @@ public class ScheduledTaskController {
         scheduledTaskRepository.delete(taskToBeRemoved);
         return new RedirectView("/dashboard");
     }
-
-
 
     @GetMapping("/addtask")
     public String getAddTask () {
