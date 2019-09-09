@@ -39,12 +39,7 @@ public class CandidateGroupController {
         return "creategroup";
     }
 
-    @GetMapping("/groupView")
-    public String getGroupView(Principal p, Model m) {
-//        m.addAttribute("group", )
-        m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
-        return "groupView";
-    }
+    // This route isn't used and will always show the error page! It should be removed.
 
     @GetMapping("/groupView/{groupId}")
     public String getGroupView(@PathVariable long groupId, Principal p, Model m) {

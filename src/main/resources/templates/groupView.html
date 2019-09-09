@@ -24,6 +24,7 @@
 
     <div th:if="${loggedInUser.isAdmin}" id="group-view">
         <div class="card" style="width: 28rem;" id="add-task-card">
+            <!-- again, it would be better to make this a link (for hoverability) and apply button styles to it. -->
             <form method="GET" th:action="${'/taskview/' + group.getId()}">
                 <button type="submit" class="btn btn-primary" id="add-task-button">Add Task</button>
             </form>

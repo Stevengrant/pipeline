@@ -73,6 +73,8 @@ public class ScheduledTaskController {
 
     }
 
+    // These mappings are actually for marking a progress as done, not a task;
+    // I would think this belongs in the ProgressController.
     @PostMapping("/task/markAsDone/{id}")
     public RedirectView markScheduledTaskAsDone(@PathVariable Long id, Principal p){
         ApplicationUser u = applicationUserRepository.findByUsername(p.getName());

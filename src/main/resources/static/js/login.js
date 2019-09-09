@@ -1,11 +1,11 @@
-
-    $(document).ready(function(){
+$(document).ready(function(){
     $('.login-info-box').fadeOut();
     $('.login-show').addClass('show-log-panel');
 });
 
 
 $('.login-reg-panel input[type="radio"]').on('change', function() {
+    // could use fadeToggle and toggleClass for these, to avoid having all the same logic in the two conditionals.
     if($('#log-login-show').is(':checked')) {
         $('.register-info-box').fadeOut();
         $('.login-info-box').fadeIn();
