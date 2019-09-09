@@ -22,6 +22,7 @@ public class ScheduledTask {
     @Column(columnDefinition = "text")
     String pointOfContact;
 
+    // theseAreExcellentJavaVariableNames :)
     @ManyToOne
     CandidateGroup groupThisTaskBelongsTo;
 

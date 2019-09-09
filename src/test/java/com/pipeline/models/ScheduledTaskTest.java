@@ -13,6 +13,7 @@ public class ScheduledTaskTest {
     public void getSetName() {
         ScheduledTask scheduledTask = new ScheduledTask();
         scheduledTask.setName("name");
+        // assertEquals
         assertTrue(scheduledTask.getName().equals("name"));
     }
 
