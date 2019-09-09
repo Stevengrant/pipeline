@@ -64,6 +64,8 @@ public class HomeController {
 
 
 //Testing purpose front end
+
+    //Which is the real group view, this or from candidateGroupController
     @GetMapping("/groupview")
     public String getGroupView(){
 
@@ -88,9 +90,4 @@ public class HomeController {
     public String getAboutUs() {
         return "aboutUs";
     }
-
-
-    //Testing purpose front end
-
-
 }

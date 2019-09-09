@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.validation.GroupSequence;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class CandidateGroupController {
@@ -41,7 +38,6 @@ public class CandidateGroupController {
 
     @GetMapping("/groupView")
     public String getGroupView(Principal p, Model m) {
-//        m.addAttribute("group", )
         m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
         return "groupView";
     }
