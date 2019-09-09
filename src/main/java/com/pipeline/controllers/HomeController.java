@@ -59,29 +59,15 @@ public class HomeController {
         return "dashboard";
     }
 
-    @GetMapping("/logout")
-    public String getLogout(){
-        return "root";
-    }
+    // The /logout mapping is taken care of by the WebSecurityConfig; this shouldn't be here at all.
 
-    @GetMapping("/groupview")
-    public String getGroupView(){
+    // The fact that between the CandidateGroupController and the HomeController,
+    // there are capitalized and non-capitalized versions of the group[vV]iew routes, makes
+    // me VERY nervous for the development process here.
 
-        return "groupView";
-    }
-
-    @GetMapping("/groupview/{groupId}")
-    public String getSingleGroupView(@PathVariable long groupId, Principal p, Model m){
-        CandidateGroup group = candidateGroupRepository.findById(groupId).get();
-        m.addAttribute("group", group);
-        m.addAttribute("loggedInUser", applicationUserRepository.findByUsername(p.getName()));
-        return "groupView";
-    }
-
-    @GetMapping("/taskview")
-    public String getTaskView(){
-        return "taskView";
-    }
+    // And the taskview route here isn't linked from anywhere, and will also
+    // always result in an error page... I'm extremely confused about why a lot
+    // of this code exists!
 
     @GetMapping("/aboutUs")
     public String getAboutUs() {

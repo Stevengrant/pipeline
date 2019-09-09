@@ -20,13 +20,14 @@
 
 <body id="screen-container">
     <!--Create task view begins.-->
+    <!-- The fact that this is in both conditionals means it can exist outside of the conditionals entirely. -->
+    <div th:replace="fragments/banner :: banner"></div>
     <div th:if="${status}">
-        <div th:replace="fragments/banner :: banner"></div>
 
         <h1 id="group-name"><span th:text="${group.getGroupName()}"></span></h1>
 
         <!--Admin user view-->
-        <div  id="admin-view" th:if="${loggedInUser.isAdmin}">
+        <div id="admin-view" th:if="${loggedInUser.isAdmin}">
             <div class="card" style="width: 22rem;" id="admin-view-card">
                 <div class="card-body">
                     <form class="card-text" th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">
@@ -37,6 +38,7 @@
                         <label >Point of Contact <input class="input-fields" type="text" name="poc" required></label><br>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="submit" class="btn btn-success task-buttons" id="save-button">Save</button>
+                            <!-- this form does nothing; why is it here? -->
                             <form method="GET" th:action="${'/dashboard'}" >
                             </form>
                         </div>
@@ -47,7 +49,7 @@
 
         <!--Candidate user view-->
         <div  id="candidate-view" th:unless="${loggedInUser.isAdmin}">
-            <div class="card" style="width: 22rem;" id="candidate-view-card">
+            <div class="card" id="candidate-view-card">
                 <div class="card-body">
                     <form method="POST" th:action="${'/task/update/' + task.getId()}">
                         <h2>Task Name: <span th:text="${task.name}"></span></h2><br>
@@ -63,7 +65,6 @@
 
     <!--Edit task view begins.-->
     <div th:unless="${status}">
-        <div th:replace="fragments/banner :: banner"></div>
 
         <h1 id="task-name"><span th:text="${task.getName()}"></span></h1>
 
@@ -72,6 +73,7 @@
             <div class="card" style="width: 22rem;" id="admin-view-card">
                 <div class="card-body">
                     <form class="card-text" method="POST" th:action="${'/task/update/' + task.getId()}">
+                        <!-- I wish that these were labels instead of h2s! It would make accessibility so much better! -->
                         <h2 class="input-labels">Task Name:</h2>
                         <input class="input-fields" type="text" name="nameOfTask" th:value="${task.getName()}">
                         <h2 class="input-labels">Instruction:</h2>
@@ -85,6 +87,8 @@
                         <div class="btn-group form-group" role="group" id="edit-buttons-container">
                             <button type="submit" class="btn btn-success" id="save-button">Save</button>
 
+                            <!-- is this a form just so that it gets a button styled the same way as the save button?
+                            It's easier to just apply the same CSS to both a button and an <a>. -->
                             <form method="GET" th:action="${'/dashboard'}" >
                                 <button type="submit" class="btn btn-warning edit-buttons" id="cancel-button">Cancel</button>
                             </form>
@@ -95,8 +99,9 @@
         </div>
 
         <!--Candidate user view-->
+        <!-- So much duplicated code here! This could be achieved once with a single conditional, or else abstracted out into a fragment. -->
         <div  id="candidate-view" th:unless="${loggedInUser.isAdmin}">
-            <div class="card" style="width: 22rem;" id="candidate-view-card">
+            <div class="card" id="candidate-view-card">
                 <div class="card-body">
                     <form class="card-text" method="POST" th:action="${'/task/update/' + task.getId()}">
                         <h2>Task Name: <span th:text="${task.name}"></span></h2><br>

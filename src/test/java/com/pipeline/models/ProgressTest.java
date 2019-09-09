@@ -24,6 +24,7 @@ public class ProgressTest {
         Date due = new Date(System.currentTimeMillis()+10000);
         Progress prog = new Progress();
         prog.setDue(due);
+        // again, use assertNotNull and assertEquals instead of assertTrue
         assertTrue(prog.getDue()!=null);
     }
 

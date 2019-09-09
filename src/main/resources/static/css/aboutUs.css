@@ -16,12 +16,14 @@
     margin: .5em;
 }
 
+/* This is REALLY hard to read; consider using higher-contrast text. */
 .card {
     color: #354C71;
     background-color: #359692;
     border: .05em solid #354C71;
     margin: 1em;
     padding: 1em;
+    flex: 1;
 }
 
 .card-img-top {

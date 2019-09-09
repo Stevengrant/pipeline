@@ -45,7 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/users", "/users/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login")
+                // this works only because you have the redirect to your homepage
+                // at /login; this should say your login page is at the root.
+                .formLogin().loginPage("/")
                 .and()
                 .formLogin().defaultSuccessUrl("/dashboard")
                 .and()

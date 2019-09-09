@@ -1,3 +1,4 @@
+/* Having this in every single css file is not very dry; consider having a single common CSS file across all pages, in addition to per-page CSS files. */
 * {
     font-family: 'Khand', sans-serif;
 }

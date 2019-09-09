@@ -23,15 +23,17 @@ public class PipelineApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-		@Test public void testHomePage_containsUsername() throws Exception {
-		//Root/index
-			this.mockMvc
-					.perform(MockMvcRequestBuilders.get("/"))
-					.andDo(MockMvcResultHandlers.print())
-					.andExpect(MockMvcResultMatchers.content().string(
-							org.hamcrest.Matchers.containsString("LOGIN")
-					));
-		}
+
+	// The name of this test doesn't match what it does.
+	@Test public void testHomePage_containsUsername() throws Exception {
+	//Root/index
+		this.mockMvc
+				.perform(MockMvcRequestBuilders.get("/"))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(MockMvcResultMatchers.content().string(
+						org.hamcrest.Matchers.containsString("LOGIN")
+				));
+	}
 
 	@Test public void testRegistrationPage() throws Exception {
 		//registration
@@ -41,7 +43,8 @@ public class PipelineApplicationTests {
 				.andExpect((MockMvcResultMatchers.content().string(
 						org.hamcrest.Matchers.containsString("Register")
 				)));
-		}
+	}
+	// missing a test for About Us page, at minimum
 }
 
 
