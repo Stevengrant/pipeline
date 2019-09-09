@@ -18,9 +18,10 @@
 
 </head>
 <body id="screen-container">
+
     <div th:replace="fragments/banner :: banner"></div>
 
-<!--    Admin Dashboard View-->
+    <!--    Admin Dashboard View-->
     <div th:if="${loggedInUser.isAdmin}" id="admin-view">
         <div class="card" style="width: 28rem; height: 16rem;" id="group-create-card">
             <div class="card-body">
@@ -55,7 +56,7 @@
                         <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
                             <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
                             <div th:if="${!task.isComplete}">
-                                <form  method="POST" th:action="${'/task/markAsDone/'+task.getId()}"> <button type="submit">Mark as done</button></form>
+                                <form  method="POST" th:action="${'/task/markAsDone/'+task.getId()}"> <button class="btn btn-primary task-buttons" type="submit" >Mark as done</button></form>
                             </div>
                             <div th:unless="${!task.isComplete}"> DONE</div>
                         </li>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -31,7 +32,10 @@ public class HomeController {
         return "root";
     }
 
-
+    @GetMapping("/login")
+    public RedirectView getLogin(){
+        return new RedirectView("/");
+    }
     @GetMapping("/registration/{id}")
     public String getRegistration(@PathVariable long id, Model m){
         m.addAttribute("isCandidate",true);
@@ -62,6 +66,7 @@ public class HomeController {
 //Testing purpose front end
     @GetMapping("/groupview")
     public String getGroupView(){
+
         return "groupView";
     }
 
@@ -74,11 +79,13 @@ public class HomeController {
         return "groupView";
     }
 
+    //Need to add "loggedInUser model attribute
     @GetMapping("/taskview")
     public String getTaskView(){
         return "taskView";
     }
 
+    //Need to add "loggedInUser model attribute
     @GetMapping("/aboutUs")
     public String getAboutUs() {
         return "aboutUs";

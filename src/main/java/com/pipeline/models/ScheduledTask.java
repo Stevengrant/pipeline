@@ -30,11 +30,12 @@ public class ScheduledTask {
 
     public ScheduledTask(){}
 
-    public ScheduledTask(String name, String instructions, String pointOfContact) {
-        this.name = name;
-        this.instructions = instructions;
-        this.pointOfContact = pointOfContact;
-    }
+    //Old constructor not used anymore
+//    public ScheduledTask(String name, String instructions, String pointOfContact) {
+//        this.name = name;
+//        this.instructions = instructions;
+//        this.pointOfContact = pointOfContact;
+//    }
 
     public ScheduledTask(String name, String instructions, String pointOfContact, String link,
      Date dueDate, CandidateGroup groupThisTaskBelongsTo ) {
@@ -93,5 +94,21 @@ public class ScheduledTask {
 
     public String getLink() {
         return link;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setGroupThisTaskBelongsTo(CandidateGroup groupThisTaskBelongsTo) {
+        this.groupThisTaskBelongsTo = groupThisTaskBelongsTo;
+    }
+
+    public void setProgressRelatedToThisTask(Set<Progress> progressRelatedToThisTask) {
+        this.progressRelatedToThisTask = progressRelatedToThisTask;
     }
 }

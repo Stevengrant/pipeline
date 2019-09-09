@@ -46,7 +46,7 @@ public class ScheduledTaskController {
     //update
     @PostMapping("/task/update/{taskId}")
     public RedirectView updateTask(@PathVariable long taskId, Principal p, String nameOfTask, String instructions,
-                                   String poc, Date dueDate) {
+                                   String poc, Date dueDate, String taskLink) {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         ScheduledTask taskToBeUpdated = scheduledTaskRepository.findById(taskId).get();
         if (!taskToBeUpdated.getGroupThisTaskBelongsTo().getOwner().equals(user)) {
@@ -55,18 +55,21 @@ public class ScheduledTaskController {
         if(nameOfTask != null){
             taskToBeUpdated.setName(nameOfTask);
         }
+        if (taskLink != null) {
+            taskToBeUpdated.setLink(taskLink);
+        }
         if(instructions != null){
             taskToBeUpdated.setInstructions(instructions);
         }
         if(poc != null){
             taskToBeUpdated.setPointOfContact(poc);
         }
-        if(!dueDate.equals(taskToBeUpdated.getDueDate())) {
+
+        if(dueDate != null) {
             taskToBeUpdated.setDueDate(dueDate);
         }
-//        taskToBeUpdated.setPointOfContact(poc);
         scheduledTaskRepository.save(taskToBeUpdated);
-        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo());
+        return new RedirectView("/groupView/" + taskToBeUpdated.getGroupThisTaskBelongsTo().getId());
 
     }
     @PostMapping("/task/markAsDone/{id}")
@@ -75,7 +78,7 @@ public class ScheduledTaskController {
         Set<Progress> prog = u.getProgressOfScheduledTasks();
         for (Progress progress : prog){
             if(progress.getId() == id){
-                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
+//                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
                 progress.setComplete(true);
                 Date dateNow = new Date(System.currentTimeMillis());
                 progress.setCompleteAt(dateNow);
@@ -94,6 +97,7 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("loggedInUser", currUser);
         m.addAttribute("group", group);
+        m.addAttribute("status", true);
         return "taskView";
     }
 
@@ -103,7 +107,8 @@ public class ScheduledTaskController {
         ApplicationUser currUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("task", task);
         m.addAttribute("loggedInUser", currUser);
-        return "editTaskView";
+        m.addAttribute("status", false);
+        return "taskView";
     }
 
     //delete
