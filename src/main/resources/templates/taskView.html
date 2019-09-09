@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Task View</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/taskView.css">
+    <link rel="stylesheet" href="/css/banner.css">
+
+</head>
+
+<body id="screen-container">
+    <!--Create task view begins.-->
+    <div th:if="${status}">
+        <div th:replace="fragments/banner :: banner"></div>
+
+        <h1 id="group-name"><span th:text="${group.getGroupName()}"></span></h1>
+
+        <!--Admin user view-->
+        <div  id="admin-view" th:if="${loggedInUser.isAdmin}">
+            <div class="card" style="width: 22rem;" id="admin-view-card">
+                <div class="card-body">
+                    <form class="card-text" th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">
+                        <label>Task Name: <input class="input-fields" type="text" name="nameOfTask" placeholder="Task 1" required></label>
+                        <label>Instruction: <input class="input-fields" type="text" name="instructions" placeholder="instruction 1" required></label><br>
+                        <label>Task Link <input class="input-fields" type="text" name="taskLink" ></label><br>
+                        <label>Due Date: <input class="input-fields" type="date" name="dueDate" id="dueDate" required></label><br>
+                        <label >Point of Contact <input class="input-fields" type="text" name="poc" required></label><br>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="submit" class="btn btn-success task-buttons" id="save-button">Save</button>
+                            <form method="GET" th:action="${'/dashboard'}" >
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Candidate user view-->
+        <div  id="candidate-view" th:unless="${loggedInUser.isAdmin}">
+            <div class="card" style="width: 22rem;" id="candidate-view-card">
+                <div class="card-body">
+                    <form method="POST" th:action="${'/task/update/' + task.getId()}">
+                        <h2>Task Name: <span th:text="${task.name}"></span></h2><br>
+                        <h2>Instruction: <span th:text="${task.instructions}"></span></h2><br>
+                        <h2>Task link: <span th:text="${task.link}"></span></h2><br>
+                        <h2>Point of Contact: <span th:text="${task.pointOfContact}"></span></h2><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Create task view ends.-->
+
+    <!--Edit task view begins.-->
+    <div th:unless="${status}">
+        <div th:replace="fragments/banner :: banner"></div>
+
+        <h1 id="task-name"><span th:text="${task.getName()}"></span></h1>
+
+        <!--Admin user view-->
+        <div  id="admin-view" th:if="${loggedInUser.isAdmin}">
+            <div class="card" style="width: 22rem;" id="admin-view-card">
+                <div class="card-body">
+                    <form class="card-text" method="POST" th:action="${'/task/update/' + task.getId()}">
+                        <h2 class="input-labels">Task Name:</h2>
+                        <input class="input-fields" type="text" name="nameOfTask" th:value="${task.getName()}">
+                        <h2 class="input-labels">Instruction:</h2>
+                        <input class="input-fields" type="text" name="instructions" th:value="${task.getInstructions()}">
+                        <h2 class="input-labels">Task link:</h2>
+                        <input class="input-fields" type="text" name="taskLink" th:value="${task.getLink()}">
+                        <h2 class="input-labels">Due Date:</h2>
+                        <input class="input-fields" type="date" id="dueDate" th:value="${task.getDueDate()}">
+                        <h2 class="input-labels">Point of Contact: </h2>
+                        <input class="input-fields" type="text" name="poc" th:value="${task.getPointOfContact()}">
+                        <div class="btn-group form-group" role="group" id="edit-buttons-container">
+                            <button type="submit" class="btn btn-success" id="save-button">Save</button>
+
+                            <form method="GET" th:action="${'/dashboard'}" >
+                                <button type="submit" class="btn btn-warning edit-buttons" id="cancel-button">Cancel</button>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Candidate user view-->
+        <div  id="candidate-view" th:unless="${loggedInUser.isAdmin}">
+            <div class="card" style="width: 22rem;" id="candidate-view-card">
+                <div class="card-body">
+                    <form class="card-text" method="POST" th:action="${'/task/update/' + task.getId()}">
+                        <h2>Task Name: <span th:text="${task.name}"></span></h2><br>
+                        <h2>Instruction: <span th:text="${task.instructions}"></span></h2><br>
+                        <h2>Task link: <span th:text="${task.link}"></span></h2><br>
+                        <h2>Point of Contact: <span th:text="${task.pointOfContact}"></span></h2><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Edit task view ends.-->
+
+</body>
+</html>
+
+

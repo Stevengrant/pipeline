@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div th:fragment="banner" id="banner">
+        <div th:if="${loggedInUser}">
+            <a href="/" class="nav-item"><h1 id="title">PIPELINE</h1></a>
+            <div id="nav-buttons">
+                <a href="/dashboard" class="nav-item" id="dashboard">DASHBOARD</a>
+                <a href="/aboutUs" class="nav-item" id="about-us">ABOUT US</a>
+                <a href="/logout" class="nav-item" id="logout">LOGOUT</a>
+            </div>
+        </div>
+        <div th:unless="${loggedInUser}" id="banner">
+            <a href="/" class="nav-item"><h1 id="title">PIPELINE</h1></a>
+            <div id="nav-buttons">
+                <a href="/aboutUs" class="nav-item" id="about-us">ABOUT US</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

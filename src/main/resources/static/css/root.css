@@ -1,0 +1,47 @@
+* {
+    font-family: 'Khand', sans-serif;
+}
+
+#screen-container {
+    background-color: #80839B;
+}
+
+#primary-background {
+    background-color: #963542;
+}
+
+#secondary-background {
+    color: #e33059;
+}
+
+#login-button {
+    border-color: #963542;
+}
+
+#label-login {
+    color: #354C71;
+    background-color: #359692;
+    border: .05em solid #354C71;
+}
+
+#label-register {
+    color: #354C71;
+    background-color: #359692;
+    border: .05em solid #354C71;
+}
+
+#register-button {
+    color: #359692;
+    background-color: #354C71;
+}
+
+#login-button {
+    color: #359692;
+    background-color: #354C71;
+}
+
+.input-fields {
+    color: #D4E5E4;
+    background-color: #963542;
+    border-color: #963542;
+}

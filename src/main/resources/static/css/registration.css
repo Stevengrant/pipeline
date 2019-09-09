@@ -1,0 +1,50 @@
+* {
+    font-family: 'Khand', sans-serif;
+}
+
+body {
+    background:#80839B;
+}
+
+.box {
+    width:75%;
+    display: block;
+    margin: 0 auto;
+    margin-top:30px;
+    background-color: #359692;
+    border-radius:5px;
+    padding: 20px;
+}
+
+.box input {
+    padding:5px;
+    font-weight:700;
+    background-color: #963542;
+    border:1px solid #963542;
+    margin-top:15px;
+    color:#D4E5E4;
+}
+
+button {
+    font-weight:900;
+    display:block;
+    margin:auto;
+    margin-top:15px;
+    border:none;
+    border-radius:5px;
+    background:#444444;
+    color:#f9f9f9;
+    padding:15px 30px;
+}
+
+h1 {
+ color:#354C71
+ }
+
+.secondary-box {
+    width:75%;
+}
+
+#registration-view {
+    border: .05em solid #354C71;
+}

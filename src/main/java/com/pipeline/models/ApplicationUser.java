@@ -22,24 +22,45 @@ public class ApplicationUser implements UserDetails {
     String firstName;
     String lastName;
 
-    @ManyToMany
-    Set<ScheduledEvent> scheduledEvents;
-
-    public long getId() {
-        return id;
+    public boolean isAdmin() {
+        return isAdmin;
     }
+
+    public boolean isAdmin;
+    //This represents the relationship between an admin and their owned groups
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "owner")
+    Set<CandidateGroup> candidateGroup;
+
+    //This represents the relationship between and candidate and their candidate group
+    @ManyToOne
+    public CandidateGroup groupThatCandidatesBelongTo;
+
+    public void setProgressOfScheduledTasks(Set<Progress> progressOfScheduledTasks) {
+        ProgressOfScheduledTasks = progressOfScheduledTasks;
+    }
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "applicationUser", cascade = CascadeType.ALL)
+    Set<Progress> ProgressOfScheduledTasks;
 
     //Constructor
     public ApplicationUser () {}
-    public ApplicationUser (String username, String password, String firstName, String lastName,
-                            Set<ScheduledEvent> scheduledEvents) {
+
+    //Constructor for Candidate Users
+    public ApplicationUser (String username, String password, String firstName, String lastName, CandidateGroup candidateGroup) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.scheduledEvents = scheduledEvents;
+        this.groupThatCandidatesBelongTo = candidateGroup;
+        this.isAdmin = false;
     }
-
+    //Constructor for Admin Users
+    public ApplicationUser (String username, String password, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isAdmin = true;
+    }
     @Override
     public String getUsername() {
         return username;
@@ -97,5 +118,21 @@ public class ApplicationUser implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<CandidateGroup> getCandidateGroup() {
+        return candidateGroup;
+    }
+
+    public void setCandidateGroup(CandidateGroup candidateGroup) {
+        this.candidateGroup.add(candidateGroup);
+    }
+
+    public Set<Progress> getProgressOfScheduledTasks() {
+        return ProgressOfScheduledTasks;
+    }
+
+    public long getId() {
+        return id;
     }
 }

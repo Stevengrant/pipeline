@@ -1,0 +1,22 @@
+#banner {
+    background-color: #354C71;
+    font-family: 'Khand', sans-serif;
+}
+
+#title {
+    color: #359692;
+    font-weight: bold;
+    width: 100%;
+    padding: .25em;
+
+}
+
+#nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    color: #359692;
+    margin-right: 1em;
+}

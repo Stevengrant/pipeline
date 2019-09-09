@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Group View</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/groupView.css">
+    <link rel="stylesheet" href="/css/banner.css">
+
+</head>
+<body id="screen-container">
+
+    <div th:replace="fragments/banner :: banner"></div>
+    <h1 id="group-name">GROUP NAME: <span th:text="${group.getGroupName()}"></span></h1>
+
+    <div th:if="${loggedInUser.isAdmin}" id="group-view">
+        <div class="card" style="width: 28rem;" id="add-task-card">
+            <form method="GET" th:action="${'/taskview/' + group.getId()}">
+                <button type="submit" class="btn btn-primary" id="add-task-button">Add Task</button>
+            </form>
+            <div class="card-body" id="existing-tasks">
+                <ul class="list-group list-group-flush">
+                    <h3 class="card-title list-group-item-heading">TASKS: </h3>
+                    <li class="card-text list-group-item" th:each="task : ${group.getScheduledTasks()}" >
+                        <a th:href="${'/taskview/edit/' + task.getId()}"><h3><span th:text="${task.getName()}"></span></h3></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" style="width: 28rem;" id="add-member-card">
+            <!-- Trigger modal with button. -->
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal" id="add-member-button">Add Member</button>
+            <div th:replace="fragments/modal :: div"></div>
+
+            <div class="card" id="existing-members"style="width: 18rem;">
+                <ul class="list-group list-group-flush card-title">
+                    <h3 class="list-group-item-heading">MEMBERS: </h3>
+                    <li th:each="member : ${group.getCandidatesInAGroup()}" class="list-group-item card-text">
+                        <h3><span th:text="${member.getFirstName()}"></span></h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

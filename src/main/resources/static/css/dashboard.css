@@ -1,0 +1,77 @@
+* {
+    font-family: 'Khand', sans-serif;
+}
+
+#screen-container {
+    background-color: #80839B;
+}
+
+#admin-view {
+    display: flex;
+    flex-direction: row;
+}
+
+#candidate-view {
+    display: flex;
+    flex-direction: row;
+}
+
+#group-name-input {
+    background-color: #963542;
+    border: none;
+}
+
+.list-group-item {
+    background-color: #963542;
+    margin-top: 1em;
+    border: none;
+}
+
+#group-create-card {
+    color: #354C71;
+    background-color: #359692;
+    border: .05em solid #354C71;
+    margin: 1em;
+    padding: 1em;
+}
+
+#group-list-card {
+    color: #354C71;
+    background-color: #359692;
+    border: .05em solid #354C71;
+    margin: 1em;
+    padding: .75em;
+}
+
+#candidate-details-card {
+    color: #354C71;
+    background-color: #359692;
+    border: .05em solid #354C71;
+    margin: 1em;
+    padding: 1em;
+}
+
+#create-group-button {
+    color: #359692;
+    background-color: #354C71;
+    border-color: #963542;
+    border: none;
+    margin-top: 1em;
+}
+
+.task-buttons {
+    color: #359692;
+    background-color: #354C71;
+    border-color: #963542;
+    border: none;
+    margin-top: 1em;
+}
+
+#greeting {
+
+}
+
+#group-affiliation {
+
+}
+

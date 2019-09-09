@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/banner.css">
+
+</head>
+<body id="screen-container">
+
+    <div th:replace="fragments/banner :: banner"></div>
+
+    <!--    Admin Dashboard View-->
+    <div th:if="${loggedInUser.isAdmin}" id="admin-view">
+        <div class="card" style="width: 28rem; height: 16rem;" id="group-create-card">
+            <div class="card-body">
+                <form method="POST" action="/addgroup">
+                    <div class="form-group">
+                        <h4 class="card-title" for="groupName">GROUP NAME:</h4>
+                        <input class="form-control card-text" name="groupName" id="group-name-input" placeholder="Enter group name here..." required>
+                        <button type="submit" class="btn btn-primary" id="create-group-button">Create Group</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card" style="width: 28rem;" id="group-list-card">
+            <h4 class="card-title" >YOUR GROUPS:</h4>
+            <ul class="list-group list-group-flush" name="groupList" id="group-list">
+                <li class="list-group-item" th:each="group : ${loggedInUser.candidateGroup}">
+                    <a th:href="${'/groupview/' + group.id}"><h1><span th:text="${group.getGroupName()}"></span></h1></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<!--    Candidate dashboard view-->
+    <div th:unless="${loggedInUser.isAdmin}" id="candidate-view">
+        <div class="card" style="width: 28rem;" id="candidate-details-card">
+            <div class="card-body">
+                <h5 class="card-title" id="greeting">Hello, <span th:text="${loggedInUser.firstName} + ."></span></h5>
+                <div class="card-text">
+                    <h4>Group Membership:</h4>
+                    <h4 th:text="${loggedInUser.groupThatCandidatesBelongTo.groupName}" id="group-affiliation"></h4>
+                    <ul >
+                        <li th:each="task : ${loggedInUser.ProgressOfScheduledTasks}">
+                            <a th:href="${'/taskview/edit/' + task.taskRelatedToThisProgress.id}"><span th:text="${task.taskRelatedToThisProgress.name}"></span></a>
+                            <div th:if="${!task.isComplete}">
+                                <form  method="POST" th:action="${'/task/markAsDone/'+task.getId()}"> <button class="btn btn-primary task-buttons" type="submit" >Mark as done</button></form>
+                            </div>
+                            <div th:unless="${!task.isComplete}"> DONE</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

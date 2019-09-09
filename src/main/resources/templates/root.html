@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/banner.css">
+
+</head>
+<body id="screen-container">
+    <div th:replace="fragments/banner :: banner"></div>
+    <div class="login-reg-panel" id="primary-background">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+        </div>
+
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <p>Get started now!</p>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+        <div class="white-panel" id="secondary-background">
+            <form method="POST" action="/login" >
+                <div class="login-show">
+                    <h2>LOGIN</h2>
+                    <input class="input-fields" type="text" id="username" name="username" placeholder="User Name" required>
+                    <input class="input-fields" type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login" id="login-button">
+                </div>
+            </form>
+
+            <form method="POST" action="/users">
+                <div class="register-show">
+                    <h2>REGISTER</h2>
+                    <input class="input-fields" type="text" placeholder="First Name" name="firstName" required>
+                    <input class="input-fields" type="text" placeholder="Last Name" name="lastName" required>
+                    <input class="input-fields" type="text" placeholder="User Name" name="username" required>
+                    <input class="input-fields" type="password" placeholder="Password" name="password" required>
+                    <input type="submit" value="Register" id="register-button">
+                </div>
+            </form>
+<!--            <form th:if="${isCandate}" method="POST" th:action="${'/users/' + groupId}">-->
+<!--                <div class="register-show">-->
+<!--                    <h2>REGISTER CANDIDATE</h2>-->
+<!--                    <input class="input-fields" type="text" placeholder="First Name" name="firstName" required>-->
+<!--                    <input class="input-fields" type="text" placeholder="Last Name" name="lastName" required>-->
+<!--                    <input class="input-fields" type="text" placeholder="User Name" name="username" required>-->
+<!--                    <input class="input-fields" type="password" placeholder="Password" name="password" required>-->
+<!--                    <input type="submit" value="Register">-->
+<!--                </div>-->
+<!--            </form>-->
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+
+</body>
+</html>
+
+<!--Resources-->
+<!--https://bootsnipp.com/snippets/92gmX-->

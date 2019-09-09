@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Khand&display=swap" rel="stylesheet">
+
+    <!--Bootstrap Boilerplate-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/aboutUs.css">
+    <link rel="stylesheet" href="/css/banner.css">
+
+</head>
+<body id="screen-container">
+
+    <div th:replace="fragments/banner :: banner"></div>
+
+    <h1 id="about-us-header">ABOUT TEAM CAVALIER</h1>
+
+    <div  id="about-us-view">
+        <div class="card" style="width: 22rem;">
+            <img src="/img/brandon.jpg" class="card-img-top" alt="profile_pic">
+            <div class="card-body">
+                <h4 class="card-title">Brandon Hurrington</h4>
+                <p class="card-text">Demiurge</p>
+                <a href="https://github.com/Kai-ros" class="btn btn-primary github-link-buttons">
+                    <i class="fa fa-github" aria-hidden="true">   @Kai-ros</i>
+                </a>
+            </div>
+        </div>
+        <div class="card" style="width: 22rem;">
+            <img src="/img/steve.jpg" class="card-img-top" alt="profile_pic">
+            <div class="card-body">
+                <h4 class="card-title">Steve Grant</h4>
+                <p class="card-text">Navy Vet => Software Developer;</p>
+                <a href="https://github.com/Stevengrant" class="btn btn-primary github-link-buttons">
+                    <i class="fa fa-github" aria-hidden="true">   @Stevengrant</i>
+                </a>
+            </div>
+        </div>
+        <div class="card" style="width: 22rem;">
+            <img src="/img/ChrisCoulon.jpg" class="card-img-top" alt="profile_pic">
+            <div class="card-body">
+                <h4 class="card-title">Chris Coulon</h4>
+                <p class="card-text">
+                    Apprentice Software Developer with a background as a Logistics Officer and Project Manager with a demonstrated history of working both in the military industry and as an entrepreneur. Skilled in Management, Project Planning, Program Improvement, Cross-functional Team Leadership, Collaboration, and Public Speaking. Certificates include Lean Six Sigma Green Belt, Civil Military Operations Staff Planner, Outdoor Emergency Care Technician and a Double Bachelors of the Arts in International Relations & Environmental Studies from Franklin University Switzerland.
+                </p>
+                <a href="https://github.com/cmcoulon" class="btn btn-primary github-link-buttons">
+                    <i class="fa fa-github" aria-hidden="true">   @cmcoulon</i>
+                </a>
+            </div>
+        </div>
+        <div class="card" style="width: 22rem;">
+            <img src="/img/manish.jpg" class="card-img-top" alt="profile_pic">
+            <div class="card-body">
+                <h4 class="card-title">Manish KC</h4>
+                <p class="card-text">SDE Apprentice for Amazon BDT</p>
+                <a href="https://github.com/jManij" class="btn btn-primary github-link-buttons">
+                    <i class="fa fa-github" aria-hidden="true">   @jManij</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
