@@ -125,8 +125,10 @@ public class ScheduledTaskController {
 
 
 
-    @GetMapping("/addtask")
-    public String getAddTask () {
-        return "addtask";
-    }
+    //This mapping it never hit.
+
+//    @GetMapping("/addtask")
+//    public String getAddTask () {
+//        return "addtask";
+//    }
 }

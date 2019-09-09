@@ -18,6 +18,8 @@
 
 </head>
 
+<!--This pertains to all the templates
+    Use bootstrap grid for mobile-view-->
 <body id="screen-container">
     <!--Create task view begins.-->
     <div th:if="${status}">
@@ -25,10 +27,13 @@
 
         <h1 id="group-name"><span th:text="${group.getGroupName()}"></span></h1>
 
+<!--        This code seems redundant and does not apply to the context of adding
+            a task. The routes are virtually not present. -->
         <!--Admin user view-->
         <div  id="admin-view" th:if="${loggedInUser.isAdmin}">
             <div class="card" style="width: 22rem;" id="admin-view-card">
                 <div class="card-body">
+<!--                    -->
                     <form class="card-text" th:if="${loggedInUser.isAdmin}" method="POST" th:action="${'/addtask/' + group.getId()}">
                         <label>Task Name: <input class="input-fields" type="text" name="nameOfTask" placeholder="Task 1" required></label>
                         <label>Instruction: <input class="input-fields" type="text" name="instructions" placeholder="instruction 1" required></label><br>
@@ -67,6 +72,9 @@
 
         <h1 id="task-name"><span th:text="${task.getName()}"></span></h1>
 
+
+<!--        This is the right route that gets used in association with task. The admin
+            user view above is not used-->
         <!--Admin user view-->
         <div  id="admin-view" th:if="${loggedInUser.isAdmin}">
             <div class="card" style="width: 22rem;" id="admin-view-card">
