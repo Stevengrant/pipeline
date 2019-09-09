@@ -78,7 +78,7 @@ public class ScheduledTaskController {
         Set<Progress> prog = u.getProgressOfScheduledTasks();
         for (Progress progress : prog){
             if(progress.getId() == id){
-                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
+//                System.out.println(">>>===========-=>" + id + " : " + progress.getId());
                 progress.setComplete(true);
                 Date dateNow = new Date(System.currentTimeMillis());
                 progress.setCompleteAt(dateNow);

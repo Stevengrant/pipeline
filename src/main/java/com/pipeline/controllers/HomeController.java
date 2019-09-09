@@ -79,11 +79,13 @@ public class HomeController {
         return "groupView";
     }
 
+    //Need to add "loggedInUser model attribute
     @GetMapping("/taskview")
     public String getTaskView(){
         return "taskView";
     }
 
+    //Need to add "loggedInUser model attribute
     @GetMapping("/aboutUs")
     public String getAboutUs() {
         return "aboutUs";

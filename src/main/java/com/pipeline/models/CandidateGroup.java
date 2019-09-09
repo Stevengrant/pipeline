@@ -21,6 +21,7 @@ public class CandidateGroup {
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "groupThatCandidatesBelongTo")
     public Set<ApplicationUser> candidatesInAGroup;
 
+    //Zombie Code!!!
     @OneToMany
     Set<ScheduledTask> scheduledTasks;
 

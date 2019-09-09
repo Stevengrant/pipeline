@@ -30,11 +30,12 @@ public class ScheduledTask {
 
     public ScheduledTask(){}
 
-    public ScheduledTask(String name, String instructions, String pointOfContact) {
-        this.name = name;
-        this.instructions = instructions;
-        this.pointOfContact = pointOfContact;
-    }
+    //Old constructor not used anymore
+//    public ScheduledTask(String name, String instructions, String pointOfContact) {
+//        this.name = name;
+//        this.instructions = instructions;
+//        this.pointOfContact = pointOfContact;
+//    }
 
     public ScheduledTask(String name, String instructions, String pointOfContact, String link,
      Date dueDate, CandidateGroup groupThisTaskBelongsTo ) {
